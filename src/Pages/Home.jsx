@@ -99,21 +99,21 @@ const Home = () => {
               </div>
               <div className='my-2 d-flex justify-content-around align-items-center'>
                 <a
-                  href="https://wa.me/8790535149"
+                  href="https://wa.me/918790535149"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <button className='descriptionButtons bgLinearGradient'>Pickup from Airport</button>
                 </a>
                 <a
-                  href="https://wa.me/8790535149"
+                  href="https://wa.me/918790535149"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <button className='descriptionButtons bgLinearGradient'>Travel Packages</button>
                 </a>
                 <a
-                  href="https://wa.me/8790535149"
+                  href="https://wa.me/918790535149"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -169,7 +169,7 @@ const Home = () => {
                 </ul>
                 <div className='d-flex justify-content-center justify-content-lg-start'>
                   <a
-                    href="https://wa.me/8790535149"
+                    href="https://wa.me/918790535149"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
