@@ -1,68 +1,15 @@
-// import React from "react";
-// import DreamDestinationLogo from "../Images/DreamDestinationLogo.png";
-
-// const Navbar = () => {
-//   return (
-//     <div className="p-3">
-//       <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
-//         <div class="container-fluid bg191916 text-white borderRadius12">
-//           <div className="p-2">
-//             <img
-//               className="DreamDestinationLogo"
-//               src={DreamDestinationLogo}
-//               alt="dreamLogo"
-//             />
-//           </div>
-//           <button
-//             class="navbar-toggler"
-//             type="button"
-//             data-bs-toggle="collapse"
-//             data-bs-target="#navbarNavAltMarkup"
-//             aria-controls="navbarNavAltMarkup"
-//             aria-expanded="false"
-//             aria-label="Toggle navigation"
-//           >
-//             a   <span>
-//               <svg
-//                 xmlns="http://www.w3.org/2000/svg"
-//                 width="30"
-//                 height="30"
-//                 fill="white"
-//                 class="bi bi-list"
-//                 viewBox="0 0 16 16"
-//               >
-//                 <path
-//                   fill-rule="evenodd"
-//                   d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-//                 />
-//               </svg>
-//             </span>
-//           </button>
-//           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-//             <div class="navbar-nav d-flex justify-content-end w-100">
-//               <div className="mx-3 my-1">Home</div>
-//               <div className="mx-3 my-1">Our Cars</div>
-//               <div className="mx-3 my-1">Contact Us</div>
-//             </div>
-//           </div>
-//         </div>
-//       </nav>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
-
-import React from "react";
+import React, { useState } from "react";
 import DreamDestinationLogo from "../Images/DreamDestinationLogo.png";
+import { Link } from "react-router-dom";
+import dayMode from "../Images/dayMode.png"
 
 const Navbar = () => {
+  const [mode, setMode] = useState(false)
   return (
-    <div className="p-3">
+    <div className="position-fixed top-0 w-100 z-2">
       <nav className="navbar navbar-expand-lg bg-body-tertiary p-0">
-        <div className="container-fluid bgLinearGradient text-white borderRadius12">
-          <div className="p-2">
+        <div className="container-fluid bgLinearGradient text-white">
+          <div className="p-2" onClick={() => window.location.href = '/'}>
             <img
               className="DreamDestinationLogo"
               src={DreamDestinationLogo}
@@ -101,7 +48,7 @@ const Navbar = () => {
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="offcanvas-header">
-              <div className="p-2">
+              <div className="p-2" onClick={() => window.location.href = '/'}>
                 <img
                   className="DreamDestinationLogo"
                   src={DreamDestinationLogo}
@@ -119,10 +66,19 @@ const Navbar = () => {
               <hr className="hrLine"/>
             </div>
             <div className="offcanvas-body offcanvas-body-container">
-              <div className="navbar-nav justify-content-end flex-grow-1 pe-3 fontSanserif">
-                <div className="m-2">Home</div>
-                <div className="m-2">Our Cars</div>
-                <div className="m-2">Contact Us</div>
+              <div className="navbar-nav justify-content-end align-items-start flex-grow-1 pe-3 fontSanserif">
+                <div className="m-2">
+                  <Link to="/" className="navbarPageNames">Home</Link>
+                </div>
+                <div className="m-2">
+                  <Link to="/OurCars" className="navbarPageNames">Our Cars</Link>
+                </div>
+                <div className="m-2">
+                  <Link to="/Contact" className="navbarPageNames">Contact Us</Link>
+                </div>
+                {/* <div className="m-2">
+                  <img src={dayMode} alt="sunIcon" className="modesIcon" />
+                </div> */}
               </div>
             </div>
           </div>
