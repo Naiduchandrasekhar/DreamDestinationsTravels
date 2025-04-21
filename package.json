@@ -6,7 +6,6 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "postbuild": "cp-cli public/_redirects build/_redirects",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
