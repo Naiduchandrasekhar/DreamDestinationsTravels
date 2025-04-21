@@ -28,11 +28,11 @@ const appRouter = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "dreamdestinationstravels.netlify.app/Contact",
+                path: "/Contact",
                 element: <Contact />
             },
             {
-                path: "dreamdestinationstravels.netlify.app/OurCars",
+                path: "/OurCars",
                 element: <OurCars />
             }
         ]
