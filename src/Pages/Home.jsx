@@ -15,7 +15,16 @@ import innovaHycrosCarWaleImage from "../Images/innovaHycrosCarWaleImage.webp"
 import xuvCarImage from "../Images/xuvCarImage.webp"
 import airportDreamDestinationLogo from "../Images/airportDreamDestinationLogo.png"
 import mainBackgroundImage from "../Images/mainBackgroundImage.png"
+import divisBeachImage from "../Images/divisBeachImage.jpg";
+import simhachalamTemple from "../Images/simhachalamTemple.jpg";
+import tenatiPark from "../Images/tenatiPark.jpg"
+import arakuImage from "../Images/arakuImage.jpg"
+import arakuLandscape from "../Images/arakuLandscape.jpg"
+import arakuWaterfalls from "../Images/arakuWaterfalls.jpg"
+import borraCaves from "../Images/borraCaves.jpg"
+// import yaradaBeach from "../Images/yaradBeach.jpg"
 import { Link } from 'react-router-dom';
+import CarouselContainer from '../Components/CarouselContainer';
 // import SwiftVdiCarImage from "../Images/swiftVDICarImage.jpg";
 // import bmwFontImage from "../Images/bmwFontImage.jpg";
 // import bmwSideImage from "../Images/bmwSideImage.jpg";
@@ -28,53 +37,72 @@ const carData = [
   {
     id: 1,
     brand: "Maruti Suzuki",
-    model: "Swift VDI",
-    image: carwalDzireImage
+    model: "Dzire",
+    image: carwalDzireImage,
+    price: "₹ 3000",
+    seats: "4"
   },
 
   {
     id: 2,
     brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: grandVitaraCarImage
+    model: "Grand Vitara",
+    image: grandVitaraCarImage,
+    price: "₹ 3500",
+    seats: "6"
   },
   {
     id: 3,
     brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: ertigaCarWaleImage
+    model: "Ertiga",
+    image: ertigaCarWaleImage,
+    price: "₹ 4000",
+    seats: "6"
   },
   {
     id: 4,
     brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: swiftVDICarwaleImage
+    model: "Swift VDI",
+    image: swiftVDICarwaleImage,
+    price: "₹ 3000",
+    seats: "4"
   },
   {
     id: 5,
-    brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: innovaCrystaCarwaleImage
+    brand: "Toyota",
+    model: "Crysta",
+    image: innovaCrystaCarwaleImage,
+    price: "₹ 4500",
+    seats: "7"
   },
   {
     id: 6,
-    brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: innovaHycrosCarWaleImage
+    brand: "Toyota",
+    model: "Hycross",
+    image: innovaHycrosCarWaleImage,
+    price: "₹ 4500",
+    seats: "4"
   },
   {
     id: 7,
-    brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: urbaniaVanImage
+    brand: "Force Motors",
+    model: "Urbania",
+    image: urbaniaVanImage,
+    price: "₹ 7000",
+    seats: "17"
   },
   {
     id: 8,
-    brand: "Maruti Suzuki",
-    model: "Baleno",
-    image: xuvCarImage
+    brand: "Mahindra",
+    model: "XUV 700",
+    image: xuvCarImage,
+    price: "₹ 4500",
+    seats: "6"
   }
 ];
+
+const vizagTourImages = [tenatiPark, simhachalamTemple, divisBeachImage]
+const arakuTourImages = [arakuImage, arakuLandscape, arakuWaterfalls, borraCaves]
 
 const Home = () => {
   const [loader, setLoader] = useState(true)
@@ -134,8 +162,9 @@ const Home = () => {
                     return (
                       <div key={carDetails?.id} className='m-1 text-center fontSize13 fontWeight600 card p-1'>
                         <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
-                        <div>{carDetails?.brand}</div>
-                        <div>{carDetails?.model}</div>
+                        <div>{carDetails?.brand} {carDetails?.model}</div>
+                        <div>Price: {carDetails?.price} per/day</div>
+                        <div>Passengers: {carDetails?.seats}</div>
                       </div>
                     )
                   })
@@ -178,6 +207,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className='p-3'>
+            <div className='tourPackagesTite p-2 my-2 text-center'>Our Tour Packages</div>
           </div>
         </div>
       }

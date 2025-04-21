@@ -264,3 +264,34 @@ footer a:hover {
   padding: 10px 20px;
   border-radius: 8px;
 }
+
+.tourPackagesTite {
+  font-size: 48px !important;
+  color: #191916;
+  font-weight: bold;
+}
+
+
+ .carouselImages{
+  width: 400px;
+}
+
+.carouselWidth{
+  width: 400px;
+}
+
+.carousel-item{
+  width: 350px;
+  height: 450px;
+} 
+
+.carousel-inner{
+  border-radius: 8px;
+}
+
+.arakuLandscape{
+  width: 350px;
+  height: 450px;
+  border-radius: 8px;
+  object-fit: cover;
+}

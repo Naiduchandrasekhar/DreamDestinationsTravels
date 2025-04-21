@@ -5,6 +5,12 @@ import dayMode from "../Images/dayMode.png"
 
 const Navbar = () => {
   const [mode, setMode] = useState(false)
+  const closeOffcanvas = () => {
+    const offcanvasElement = document.getElementById('offcanvasNavbar');
+    const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+    bsOffcanvas?.hide(); // Safely call hide if instance exists
+  };
+  
   return (
     <div className="position-fixed top-0 w-100 z-2">
       <nav className="navbar navbar-expand-lg bg-body-tertiary p-0">
@@ -68,13 +74,13 @@ const Navbar = () => {
             <div className="offcanvas-body offcanvas-body-container">
               <div className="navbar-nav justify-content-end align-items-start flex-grow-1 pe-3 fontSanserif">
                 <div className="m-2">
-                  <Link to="/" className="navbarPageNames">Home</Link>
+                  <Link to="/" className="navbarPageNames" onClick={closeOffcanvas}>Home</Link>
                 </div>
                 <div className="m-2">
-                  <Link to="/OurCars" className="navbarPageNames">Our Cars</Link>
+                  <Link to="/OurCars" className="navbarPageNames" onClick={closeOffcanvas}>Our Cars</Link>
                 </div>
                 <div className="m-2">
-                  <Link to="/Contact" className="navbarPageNames">Contact Us</Link>
+                  <Link to="/Contact" className="navbarPageNames" onClick={closeOffcanvas}>Contact Us</Link>
                 </div>
                 {/* <div className="m-2">
                   <img src={dayMode} alt="sunIcon" className="modesIcon" />
