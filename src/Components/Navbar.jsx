@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="p-2" onClick={() => window.location.href = '/'}>
             <img
               className="DreamDestinationLogo"
-              src={DreamDestinationLogo}
+              src={DreamDestinationLogo} 
               alt="dreamLogo"
             />
           </div>
