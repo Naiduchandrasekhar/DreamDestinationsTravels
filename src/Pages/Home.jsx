@@ -22,9 +22,11 @@ import arakuImage from "../Images/arakuImage.jpg"
 import arakuLandscape from "../Images/arakuLandscape.jpg"
 import arakuWaterfalls from "../Images/arakuWaterfalls.jpg"
 import borraCaves from "../Images/borraCaves.jpg"
+import vizagCity from "../Images/vizagCity.jpg"
 // import yaradaBeach from "../Images/yaradBeach.jpg"
 import { Link } from 'react-router-dom';
 import CarouselContainer from '../Components/CarouselContainer';
+import TourCard from '../Components/TourCard';
 // import SwiftVdiCarImage from "../Images/swiftVDICarImage.jpg";
 // import bmwFontImage from "../Images/bmwFontImage.jpg";
 // import bmwSideImage from "../Images/bmwSideImage.jpg";
@@ -104,6 +106,40 @@ const carData = [
 const vizagTourImages = [tenatiPark, simhachalamTemple, divisBeachImage]
 const arakuTourImages = [arakuImage, arakuLandscape, arakuWaterfalls, borraCaves]
 
+const travelPlaces = [
+  {
+    title: "Araku Valley",
+    img: arakuLandscape,
+    description: "A picturesque hill station nestled in the Eastern Ghats, Araku Valley is known for its coffee plantations, tribal culture, and stunning waterfalls. A perfect getaway from Visakhapatnam."
+  },
+  {
+    title: "Lambasingi",
+    img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/Misty-Lambasingi.jpg",
+    description: "Often called the 'Kashmir of Andhra Pradesh', Lambasingi is a tiny village known for its chilly weather, misty mornings, and scenic landscapes. A rare place in South India where it gets close to freezing temperatures in winter."
+  },
+  {
+    title: "Vanajangi",
+    img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/30-VZ-VANJANGI.jpg",
+    description: "A hidden gem located in the Eastern Ghats, Vanajangi offers a magical sunrise view above the clouds. It’s a favorite trekking spot for nature lovers and photographers."
+  },
+  {
+    title: "Visakhapatnam Temple Tour Packages",
+    img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/download-3.jpg",
+    description: "Explore the divine side of Visakhapatnam with curated temple tour packages. Visit ancient temples like Simhachalam, Sri Kanaka Mahalakshmi, and ISKCON to experience spiritual bliss."
+  },
+  {
+    title: "Visakhapatnam City Sightseeing Tour Packages",
+    img: vizagCity,
+    description: "Discover the charm of Vizag through its popular attractions—RK Beach, Kailasagiri, Submarine Museum, and more. A perfect mix of city vibes and coastal beauty."
+  },
+  {
+    title: "Odisha Tour",
+    img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/duduma-koraput-odisha-2-attr-hero.jpg",
+    description: "Explore the cultural richness and natural beauty of Odisha—from the majestic Duduma Waterfalls in Koraput to ancient temples, tribal traditions, and scenic landscapes. This tour offers a soulful journey through Eastern India’s hidden gems."
+  },
+];
+
+
 const Home = () => {
   const [loader, setLoader] = useState(true)
 
@@ -152,7 +188,7 @@ const Home = () => {
           </div>
 
           <div className='text-center'>
-            <h2 className='my-2 text-center firstTitle'>Our Cars</h2>
+            <h2 className='my-2 text-center firstTitle text-decoration-underline'>Our Cars</h2>
           </div>
           <div>
             <div className='container d-flex justify-content-center py-3'>
@@ -208,8 +244,17 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='p-3'>
-            <div className='tourPackagesTite p-2 my-2 text-center'>Our Tour Packages</div>
+          <div className='p-3 container'>
+            <div className='tourPackagesTite p-2 my-2 text-center text-decoration-underline'>Our Tour Packages</div>
+            <div className='d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap'>
+              {travelPlaces?.map((place, index) => {
+                return (
+                  <div className='m-1'>
+                    <TourCard image={place?.img} description={place?.description} title={place?.title} />
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       }

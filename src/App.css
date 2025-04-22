@@ -1,6 +1,16 @@
-body {
+/* body {
   font-family: sans-serif;
+} */
+
+body {
+  font-family: 'Poppins', sans-serif;
 }
+
+
+/* body {
+  font-family: 'Nunito', sans-serif;
+} */
+
 
 .DreamDestinationLogo {
   height: 65px;
@@ -174,6 +184,12 @@ footer a:hover {
 }
 
 @media screen and (max-width: 992px) {
+  .tourPackagesTite{
+    font-size: 30px !important;
+  }
+  .tourTitle{
+    font-size: 24px !important;
+  }
   .firstDescriptionTitle {
     font-size: 24px !important;
   }
@@ -266,7 +282,7 @@ footer a:hover {
 }
 
 .tourPackagesTite {
-  font-size: 48px !important;
+  font-size: 48px;
   color: #191916;
   font-weight: bold;
 }
@@ -289,9 +305,21 @@ footer a:hover {
   border-radius: 8px;
 }
 
-.arakuLandscape{
-  width: 350px;
-  height: 450px;
+.cardImage{
+  width: 333px;
   border-radius: 8px;
   object-fit: cover;
+}
+
+.tourCard{
+  width: 350px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #130e0e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tourTitle{
+  font-size: 24px;
+  font-weight: 500;
 }
