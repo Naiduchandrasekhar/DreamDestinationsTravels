@@ -124,6 +124,10 @@ body {
   font-size: 13px;
 }
 
+.fontSize14{
+  font-size: 14px;
+}
+
 .fontWeight600 {
   font-weight: 600;
 }
@@ -323,3 +327,24 @@ footer a:hover {
   font-size: 24px;
   font-weight: 500;
 }
+
+
+.filterCarSectionContainer{
+  /* background: #e9ecef;
+    border-radius: 8px;
+    padding: 14px;
+    margin-left: 16px;
+    color: #212529;
+    box-shadow: 0 2px 8px rgba(124, 105, 105, 0.1); */
+
+    background: #f8f9fa; /* or try #f5f5f5, #fafafa */
+    border-radius: 8px;
+    padding: 14px;
+    margin-left: 16px;
+    color: #212529;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .cursorPointer{
+    cursor: pointer;
+  }

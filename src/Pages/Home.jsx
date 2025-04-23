@@ -4,15 +4,15 @@ import LoaderContainer from "../Components/LoaderContainer"
 // import planeEritaCarImage from "../Images/planeEritaCarImage.png";
 // import planeDzireCarImage from "../Images/planeDzireCarImage.png";
 // import planBrezzaCarImage from "../Images/planBrezzaCarImage.png";
-import carwalDzireImage from "../Images/carwaleDzireImage.jpg";
-import urbaniaVanImage from "../Images/urbaniaVanImage.jpg";
-import grandVitaraCarImage from "../Images/grandVitaraCarImage.webp";
-import ertigaCarWaleImage from "../Images/ertigaCarWaleImage.webp";
-import swiftVDICarwaleImage from "../Images/swiftVDICarwale.webp";
-import innovaCrystaCarwaleImage from "../Images/innovaCrystaCarwaleImage.webp";
-import mainFirstBgImage from "../Images/mainFirstBgImage.webp";
-import innovaHycrosCarWaleImage from "../Images/innovaHycrosCarWaleImage.webp"
-import xuvCarImage from "../Images/xuvCarImage.webp"
+// import carwalDzireImage from "../Images/carwaleDzireImage.jpg";
+// import urbaniaVanImage from "../Images/urbaniaVanImage.jpg";
+// import grandVitaraCarImage from "../Images/grandVitaraCarImage.webp";
+// import ertigaCarWaleImage from "../Images/ertigaCarWaleImage.webp";
+// import swiftVDICarwaleImage from "../Images/swiftVDICarwale.webp";
+// import innovaCrystaCarwaleImage from "../Images/innovaCrystaCarwaleImage.webp";
+// import mainFirstBgImage from "../Images/mainFirstBgImage.webp";
+// import innovaHycrosCarWaleImage from "../Images/innovaHycrosCarWaleImage.webp"
+// import xuvCarImage from "../Images/xuvCarImage.webp"
 import airportDreamDestinationLogo from "../Images/airportDreamDestinationLogo.png"
 import mainBackgroundImage from "../Images/mainBackgroundImage.png"
 import divisBeachImage from "../Images/divisBeachImage.jpg";
@@ -27,6 +27,7 @@ import vizagCity from "../Images/vizagCity.jpg"
 import { Link } from 'react-router-dom';
 import CarouselContainer from '../Components/CarouselContainer';
 import TourCard from '../Components/TourCard';
+import AllCars from '../Components/AllCars';
 // import SwiftVdiCarImage from "../Images/swiftVDICarImage.jpg";
 // import bmwFontImage from "../Images/bmwFontImage.jpg";
 // import bmwSideImage from "../Images/bmwSideImage.jpg";
@@ -34,74 +35,6 @@ import TourCard from '../Components/TourCard';
 // import allCarBrandImage from "../Images/allCarBrandImage.jpg";
 // import balenoCarImage from "../Images/balenoCarImage.jpg"
 // import swiftVDICarImage from "../Images/swiftVDICarImage.jpg"
-
-const carData = [
-  {
-    id: 1,
-    brand: "Maruti Suzuki",
-    model: "Dzire",
-    image: carwalDzireImage,
-    price: "₹ 3000",
-    seats: "4"
-  },
-
-  {
-    id: 2,
-    brand: "Maruti Suzuki",
-    model: "Grand Vitara",
-    image: grandVitaraCarImage,
-    price: "₹ 3500",
-    seats: "6"
-  },
-  {
-    id: 3,
-    brand: "Maruti Suzuki",
-    model: "Ertiga",
-    image: ertigaCarWaleImage,
-    price: "₹ 4000",
-    seats: "6"
-  },
-  {
-    id: 4,
-    brand: "Maruti Suzuki",
-    model: "Swift VDI",
-    image: swiftVDICarwaleImage,
-    price: "₹ 3000",
-    seats: "4"
-  },
-  {
-    id: 5,
-    brand: "Toyota",
-    model: "Crysta",
-    image: innovaCrystaCarwaleImage,
-    price: "₹ 4500",
-    seats: "7"
-  },
-  {
-    id: 6,
-    brand: "Toyota",
-    model: "Hycross",
-    image: innovaHycrosCarWaleImage,
-    price: "₹ 4500",
-    seats: "4"
-  },
-  {
-    id: 7,
-    brand: "Force Motors",
-    model: "Urbania",
-    image: urbaniaVanImage,
-    price: "₹ 7000",
-    seats: "17"
-  },
-  {
-    id: 8,
-    brand: "Mahindra",
-    model: "XUV 700",
-    image: xuvCarImage,
-    price: "₹ 4500",
-    seats: "6"
-  }
-];
 
 const vizagTourImages = [tenatiPark, simhachalamTemple, divisBeachImage]
 const arakuTourImages = [arakuImage, arakuLandscape, arakuWaterfalls, borraCaves]
@@ -190,31 +123,7 @@ const Home = () => {
           <div className='text-center'>
             <h2 className='my-2 text-center firstTitle text-decoration-underline'>Our Cars</h2>
           </div>
-          <div>
-            <div className='container d-flex justify-content-center py-3'>
-              <div className='d-flex justify-content-center justify-content-lg-between flex-wrap'>
-                {
-                  carData?.map((carDetails) => {
-                    return (
-                      <div key={carDetails?.id} className='m-1 text-center fontSize13 fontWeight600 card p-1'>
-                        <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
-                        <div>{carDetails?.brand} {carDetails?.model}</div>
-                        <div>Price: {carDetails?.price} per/day</div>
-                        <div>Passengers: {carDetails?.seats}</div>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-            </div>
-            <div className='d-flex justify-content-center'>
-              <Link to="/OurCars" className="navbarPageNames">
-                <button className='descriptionButtons bgLinearGradient '>
-                  View More Cars
-                </button>
-              </Link>
-            </div>
-          </div>
+          <AllCars hideViewMoreCarsBtn={false} hideFilterSection={true} />
           <div className='mainAirportContainer'>
             <div className='mainTitleSkipRental p-2 my-2'>
               Pickups from Vizag Airport, Hassle-Free
