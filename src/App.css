@@ -328,21 +328,32 @@ footer a:hover {
   font-weight: 500;
 }
 
-
+/* 
 .filterCarSectionContainer{
-  /* background: #e9ecef;
+  background: #e9ecef;
     border-radius: 8px;
     padding: 14px;
     margin-left: 16px;
     color: #212529;
-    box-shadow: 0 2px 8px rgba(124, 105, 105, 0.1); */
+    box-shadow: 0 2px 8px rgba(124, 105, 105, 0.1);
 
-    background: #f8f9fa; /* or try #f5f5f5, #fafafa */
+    background: #f8f9fa; 
     border-radius: 8px;
     padding: 14px;
     margin-left: 16px;
     color: #212529;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  } */
+
+
+  .filterCarSectionContainer{
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 14px;
+    margin-left: 16px;
+    color: #212529;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #d6caca;
   }
 
   .cursorPointer{

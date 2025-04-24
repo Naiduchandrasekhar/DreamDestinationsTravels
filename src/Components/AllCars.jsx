@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import carwalDzireImage from "../Images/carwaleDzireImage.jpg";
 import urbaniaVanImage from "../Images/urbaniaVanImage.jpg";
 import grandVitaraCarImage from "../Images/grandVitaraCarImage.webp";
@@ -80,18 +80,90 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
         }
     ];
 
-    const handleCheckboxChange = () => {
+    const [filterData, setFilterData] = useState({
+        brand: [],
+        model: [],
+        price: [],
+        seats: []
+    })
 
+    const handleCheckboxChange = (e) => {
+        const { name, value, checked } = e.target;
+
+        setFilterData((prev) => {
+            const updatedFilters = { ...prev };
+
+            // Step 1: Update the clicked filter
+            const currentValues = new Set(prev[name] || []);
+            checked ? currentValues.add(value) : currentValues.delete(value);
+            updatedFilters[name] = Array.from(currentValues);
+
+            // Step 2: Get matching cars based on the clicked value only
+            const clickedValueCars = carData.filter(car => String(car[name]) === value);
+
+            // Step 3: Collect related filter values from those cars
+            const relatedBrands = new Set(updatedFilters.brand || []);
+            const relatedModels = new Set(updatedFilters.model || []);
+            const relatedSeats = new Set(updatedFilters.seats || []);
+            const relatedPrices = new Set(updatedFilters.price || []);
+
+            clickedValueCars.forEach(car => {
+                if (checked) {
+                    relatedBrands.add(car.brand);
+                    relatedModels.add(car.model);
+                    relatedSeats.add(String(car.seats));
+                    relatedPrices.add(String(car.price));
+                } else {
+                    relatedBrands.delete(car.brand);
+                    relatedModels.delete(car.model);
+                    relatedSeats.delete(String(car.seats));
+                    relatedPrices.delete(String(car.price));
+                }
+            });
+
+            return {
+                brand: Array.from(relatedBrands),
+                model: Array.from(relatedModels),
+                seats: Array.from(relatedSeats),
+                price: Array.from(relatedPrices),
+            };
+        });
+    };
+
+    const handleClearAllFilters = () => {
+        setFilterData({
+            brand: [],
+            model: [],
+            price: [],
+            seats: []
+        })
     }
+
+    const [filteredCars, setFilteredCars] = useState(carData || []);
+
+    useEffect(() => {
+        const filtered = carData.filter(car => {
+            return (
+                (!filterData.brand || filterData.brand.length === 0 || filterData.brand.includes(car.brand)) &&
+                (!filterData.model || filterData.model.length === 0 || filterData.model.includes(car.model)) &&
+                (!filterData.seats || filterData.seats.length === 0 || filterData.seats.includes(String(car.seats))) &&
+                (!filterData.price || filterData.price.length === 0 || filterData.price.includes(String(car.price)))
+            );
+        });
+    
+        setFilteredCars(filtered);
+    }, [filterData]);
+    
+
 
     return (
         <div>
             <div className='container'>
-                <div className='d-flex justify-content-center align-items-center py-3'>
+                <div className='py-3'>
                     <div className='d-flex align-items-start'>
                         <div className={`${hideFilterSection ? "col-lg-12" : "col-lg-9"} d-flex justify-content-center justify-content-lg-between flex-wrap`}>
                             {
-                                carData?.map((carDetails) => {
+                                filteredCars?.map((carDetails) => {
                                     return (
                                         <div key={carDetails?.id} className='m-1 text-center fontSize13 fontWeight600 card p-1'>
                                             <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
@@ -103,87 +175,42 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                 })
                             }
                         </div>
-                        {hideFilterSection ? "" : <div className="d-none d-lg-block col-lg-3 d-flex flex-column justify-content-center filterCarSectionContainer">
-                            <h5 className="">Filter Cars</h5>
+                        {hideFilterSection ? "" :
+                            <div className="d-none d-lg-block d-flex flex-column justify-content-center filterCarSectionContainer">
+                                <h5>Filter Cars</h5>
 
-                            <div className="mb-2">
-                                <strong>Brand</strong>
-                                <div className='d-flex justify-content-between flex-wrap fontSize14'>
-                                    {["Maruti Suzuki", "Toyota", "Force Motors", "Mahindra"].map((brand, i) => (
-                                        <div className="form-check m-1" key={i}>
-                                            <input
-                                                id={brand}
-                                                className="form-check-input cursorPointer"
-                                                type="checkbox"
-                                                name="brand"
-                                                value={brand}
-                                                onChange={handleCheckboxChange}
-                                            />
-                                            <label htmlFor={brand} className="form-check-label cursorPointer">{brand}</label>
+                                {/* Filter Section Template */}
+                                {[
+                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Mahindra"], name: "brand" },
+                                    { label: "Model", options: ["Dzire", "Grand Vitara", "Ertiga", "Swift VDI", "Crysta", "Hycross", "Urbania", "XUV 700"], name: "model" },
+                                    { label: "Seats", options: ["4", "6", "7", "17"], name: "seats", format: val => `${val} Seats` },
+                                    { label: "Price", options: ["3000", "3500", "4000", "4500", "7000"], name: "price", format: val => `₹ ${val}` }
+                                ].map((filter, idx) => (
+                                    <div className="mb-3" key={idx}>
+                                        <strong>{filter.label}</strong>
+                                        <div className="d-flex flex-wrap gap-2 fontSize14 mt-2">
+                                            {filter.options.map((option, i) => (
+                                                <div className="form-check" key={i} style={{ minWidth: '48%' }}>
+                                                    <input
+                                                        id={`${filter.name}-${option}`}
+                                                        className="form-check-input cursorPointer"
+                                                        type="checkbox"
+                                                        name={filter.name}
+                                                        value={option}
+                                                        onChange={handleCheckboxChange}
+                                                        checked={filterData[filter?.name]?.includes(option)}
+                                                    />
+                                                    <label htmlFor={`${filter.name}-${option}`} className="form-check-label cursorPointer">
+                                                        {filter.format ? filter.format(option) : option}
+                                                    </label>
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                ))}
+                                <button className="btn btn-secondary w-100" onClick={handleClearAllFilters}>Clear All</button>
                             </div>
-
-                            <div className="mb-2">
-                                <strong>Model</strong>
-                                <div className='d-flex justify-content-between flex-wrap fontSize14'>
-                                    {["Dzire", "Grand Vitara", "Ertiga", "Swift VDI", "Crysta", "Hycross", "Urbania", "XUV 700"].map((model, i) => (
-                                        <div className="form-check m-1 cursorPointer" key={i}>
-                                            <input
-                                                id={model}
-                                                className="form-check-input cursorPointer"
-                                                type="checkbox"
-                                                name="model"
-                                                value={model}
-                                                onChange={handleCheckboxChange}
-                                            />
-                                            <label htmlFor={model} className="form-check-label cursorPointer">{model}</label>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="mb-2">
-                                <strong>Seats</strong>
-                                <div className='d-flex justify-content-between flex-wrap fontSize14'>
-                                    {["4", "6", "7", "17"].map((seat, i) => (
-                                        <div className="form-check m-1" key={i}>
-                                            <input
-                                                id={seat}
-                                                className="form-check-input cursorPointer"
-                                                type="checkbox"
-                                                name="seats"
-                                                value={seat}
-                                                onChange={handleCheckboxChange}
-                                            />
-                                            <label htmlFor={seat} className="form-check-label cursorPointer">{seat} Seats</label>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="">
-                                <strong>Price</strong>
-                                <div className='d-flex justify-content-between flex-wrap fontSize14'>
-                                    {["3000", "3500", "4000", "4500", "7000"].map((price, i) => (
-                                        <div className="form-check m-1" key={i}>
-                                            <input
-                                                id={price}
-                                                className="form-check-input cursorPointer"
-                                                type="checkbox"
-                                                name="price"
-                                                value={price}
-                                                onChange={handleCheckboxChange}
-                                            />
-                                            <label htmlFor={price} className="form-check-label cursorPointer">₹ {price}</label>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <button className='btn btn-secondary w-100'>Clear All</button>
-                        </div>}
+                        }
                     </div>
                 </div>
                 {hideViewMoreCarsBtn ? "" : <div className='d-flex justify-content-center'>
