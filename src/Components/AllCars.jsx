@@ -155,18 +155,16 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
         setFilteredCars(filtered);
     }, [filterData]);
 
-
-
     return (
         <div>
             <div className='container'>
                 <div className='py-3'>
-                    <div className='d-flex d-lg-none justify-content-center align-items-center mb-1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                    {hideFilterSection  ? "" : <div className='d-flex d-lg-none justify-content-center align-items-center mb-1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
                         <button className="btn filterButtonText" type="button" >Filter your favourite car</button>
                         <div className='mx-2'>
                             <img className='carFilterIcon' src={carFilterIcon} alt='carFilterIcon' />
                         </div>
-                    </div>
+                    </div>}
                     <div className="offcanvas offcanvas-bottom" tabIndex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
                         <div className="offcanvas-header">
                             <h5>Filter Cars</h5>
