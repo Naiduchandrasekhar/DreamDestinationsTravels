@@ -120,10 +120,6 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='text-center'>
-            <h2 className='my-2 text-center firstTitle text-decoration-underline'>Our Cars</h2>
-          </div>
-          <AllCars hideViewMoreCarsBtn={false} hideFilterSection={true} />
           <div className='mainAirportContainer'>
             <div className='mainTitleSkipRental p-2 my-2'>
               Pickups from Vizag Airport, Hassle-Free
@@ -153,6 +149,10 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className='text-center'>
+            <h2 className='my-2 text-center firstTitle text-decoration-underline'>Our Cars</h2>
+          </div>
+          <AllCars hideViewMoreCarsBtn={false} hideFilterSection={true} />
           <div className='p-3 container'>
             <div className='tourPackagesTite p-2 my-2 text-center text-decoration-underline'>Our Tour Packages</div>
             <div className='d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap'>

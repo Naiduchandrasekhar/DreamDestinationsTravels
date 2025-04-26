@@ -370,10 +370,27 @@ footer a:hover {
     width: 32px;
   }
 
+  .memberIcon{
+    width: 15px;
+  }
+
+  .luggageIcon{
+    width: 15px;
+  }
+
   .filterButtonText{
     width: 260px;
     padding: 4px;
     color: #0e0e0f;
     background: #fff;
     border: 1px solid grey;
+  }
+
+  .fontSize11{
+    font-size: 11px !important;
+  }
+
+  .modalHeadingFareDetails{
+    font-size: 14px !important;
+    font-weight: 500 !important;
   }

@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import carFilterIcon from "../Images/carFilterIcon.png";
+import seatsIcon from "../Images/seatsIcon.png";
+import luggageIcon from "../Images/luggageIcon.png";
 import carwalDzireImage from "../Images/carwaleDzireImage.jpg";
 import urbaniaVanImage from "../Images/urbaniaVanImage.jpg";
+import amazeRedCar from "../Images/amazeRedCar.jpg";
+import fortunerCar from "../Images/fortunerCar.jpg";
+import volovoBus from "../Images/volovoBus.jpg";
+import memberIcon from "../Images/memberIcon.png"
 import grandVitaraCarImage from "../Images/grandVitaraCarImage.webp";
 import ertigaCarWaleImage from "../Images/ertigaCarWaleImage.webp";
 import swiftVDICarwaleImage from "../Images/swiftVDICarwale.webp";
@@ -19,17 +25,19 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             brand: "Maruti Suzuki",
             model: "Dzire",
             image: carwalDzireImage,
-            price: "3000",
-            seats: "4"
+            price: "2500",
+            seats: "4",
+            luggage: "2",
         },
 
         {
             id: 2,
-            brand: "Maruti Suzuki",
-            model: "Grand Vitara",
-            image: grandVitaraCarImage,
-            price: "3500",
-            seats: "6"
+            brand: "Honda",
+            model: "Amaze",
+            image: amazeRedCar,
+            price: "2500",
+            seats: "4",
+            luggage: "2"
         },
         {
             id: 3,
@@ -37,31 +45,35 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             model: "Ertiga",
             image: ertigaCarWaleImage,
             price: "4000",
-            seats: "6"
+            seats: "6",
+            luggage: "3"
         },
         {
             id: 4,
-            brand: "Maruti Suzuki",
-            model: "Swift VDI",
-            image: swiftVDICarwaleImage,
-            price: "3000",
-            seats: "4"
-        },
-        {
-            id: 5,
             brand: "Toyota",
             model: "Crysta",
             image: innovaCrystaCarwaleImage,
             price: "4500",
-            seats: "7"
+            seats: "7",
+            luggage: "3"
+        },
+        {
+            id: 5,
+            brand: "Toyota",
+            model: "Hycross",
+            image: innovaHycrosCarWaleImage,
+            price: "4500",
+            seats: "7",
+            luggage: "3"
         },
         {
             id: 6,
             brand: "Toyota",
-            model: "Hycross",
-            image: innovaHycrosCarWaleImage,
-            price: "₹ 4500",
-            seats: "4"
+            model: "Fortuner",
+            image: fortunerCar,
+            price: "10000",
+            seats: "7",
+            luggage: "3"
         },
         {
             id: 7,
@@ -69,15 +81,17 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             model: "Urbania",
             image: urbaniaVanImage,
             price: "7000",
-            seats: "17"
+            seats: "17",
+            luggage: "20"
         },
         {
             id: 8,
-            brand: "Mahindra",
-            model: "XUV 700",
-            image: xuvCarImage,
-            price: "4500",
-            seats: "6"
+            brand: "Volovo",
+            model: "V9600",
+            image: volovoBus,
+            price: "15000",
+            seats: "45",
+            luggage: "50"
         }
     ];
 
@@ -159,7 +173,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
         <div>
             <div className='container'>
                 <div className='py-3'>
-                    {hideFilterSection  ? "" : <div className='d-flex d-lg-none justify-content-center align-items-center mb-1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                    {hideFilterSection ? "" : <div className='d-flex d-lg-none justify-content-center align-items-center mb-1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
                         <button className="btn filterButtonText" type="button" >Filter your favourite car</button>
                         <div className='mx-2'>
                             <img className='carFilterIcon' src={carFilterIcon} alt='carFilterIcon' />
@@ -174,10 +188,10 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                             <div className="d-flex d-lg-none d-flex flex-column justify-content-center filterCarSectionContainer">
                                 {/* Filter Section Template */}
                                 {[
-                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Mahindra"], name: "brand" },
-                                    { label: "Model", options: ["Dzire", "Grand Vitara", "Ertiga", "Swift VDI", "Crysta", "Hycross", "Urbania", "XUV 700"], name: "model" },
-                                    { label: "Seats", options: ["4", "6", "7", "17"], name: "seats", format: val => `${val} Seats` },
-                                    { label: "Price", options: ["3000", "3500", "4000", "4500", "7000"], name: "price", format: val => `₹ ${val}` }
+                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Volovo", "Honda"], name: "brand" },
+                                    { label: "Model", options: ["Dzire", "Ertiga", "Amaze", "V9600", "Crysta", "Hycross", "Urbania", "Fortuner"], name: "model" },
+                                    { label: "Seats", options: ["4", "6", "7", "17", "45"], name: "seats", format: val => `${val} Seats` },
+                                    { label: "Price", options: ["2500", "4000", "4500", "7000", "10000", "15000"], name: "price", format: val => `₹ ${Number(val).toLocaleString("en-IN")}` }
                                 ].map((filter, idx) => (
                                     <div className="mb-3" key={idx}>
                                         <strong>{filter.label}</strong>
@@ -211,25 +225,89 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                 filteredCars?.map((carDetails) => {
                                     return (
                                         <div key={carDetails?.id} className='m-1 text-center fontSize13 fontWeight600 card p-1'>
-                                            <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
-                                            <div>{carDetails?.brand} {carDetails?.model}</div>
-                                            <div>Price: {carDetails?.price} per/day</div>
-                                            <div>Passengers: {carDetails?.seats}</div>
+                                        <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
+                                        <div className='d-flex justify-content-between align-items-center'>
+                                            <div className='text-start'>
+                                                <div className='text-decoration-underline cursorPointer'>{carDetails?.brand} {carDetails?.model}</div>
+                                                <div className='d-flex align-items-center'>
+                                                    <div className='d-flex align-items-center'>
+                                                        <div>
+                                                            <img className='mx-1 memberIcon' src={memberIcon} alt='memberIcon' />
+                                                        </div>
+                                                        <div>{carDetails?.seats}</div>
+                                                    </div>
+                                                    <div className='d-flex align-items-center mx-2'>
+                                                        <div>
+                                                            <img className='mx-1 memberIcon' src={luggageIcon} alt='luggageIcon' />
+                                                        </div>
+                                                        <div>{carDetails?.luggage}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='text-end'>
+                                                <div className='text-decoration-underline cursorPointer'>
+                                                    <span className='fontSize11'>starts from</span> ₹{carDetails?.price?.toLocaleString('en-IN')}
+                                                </div>
+                                                <div
+                                                    className='text-decoration-underline cursorPointer'
+                                                    data-bs-toggle='modal'
+                                                    data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}
+                                                >
+                                                    Base Fare
+                                                </div>
+                                            </div>
                                         </div>
+                                    
+                                        {/* Modal */}
+                                        <div
+                                            className='modal fade'
+                                            id={carDetails?.model?.replace(/\s+/g, '_')}
+                                            data-bs-backdrop='static'
+                                            data-bs-keyboard='false'
+                                            tabIndex='-1'
+                                            aria-labelledby={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}
+                                            aria-hidden='true'
+                                        >
+                                            <div className='modal-dialog'>
+                                                <div className='modal-content'>
+                                                    <div className='modal-header'>
+                                                        <h1 className='modalHeadingFareDetails' id={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}>
+                                                            {carDetails?.brand} {carDetails?.model} - Fare Details
+                                                        </h1>
+                                                        <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                    </div>
+                                                    <div className='modal-body text-start'>
+                                                        {/* You can put more fare breakdown info here */}
+                                                        Base fare details for {carDetails?.model}
+                                                    </div>
+                                                    <div className='modal-footer'>
+                                                        <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>
+                                                            Close
+                                                        </button>
+                                                        <button type='button' className='btn btn-primary'>
+                                                            Understood
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     )
                                 })
                             }
                         </div>
+
                         {hideFilterSection ? "" :
                             <div className="d-none d-lg-block d-flex flex-column justify-content-center filterCarSectionContainer">
                                 <h5>Filter Cars</h5>
 
                                 {/* Filter Section Template */}
                                 {[
-                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Mahindra"], name: "brand" },
-                                    { label: "Model", options: ["Dzire", "Grand Vitara", "Ertiga", "Swift VDI", "Crysta", "Hycross", "Urbania", "XUV 700"], name: "model" },
-                                    { label: "Seats", options: ["4", "6", "7", "17"], name: "seats", format: val => `${val} Seats` },
-                                    { label: "Price", options: ["3000", "3500", "4000", "4500", "7000"], name: "price", format: val => `₹ ${val}` }
+                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Volovo", "Honda"], name: "brand" },
+                                    { label: "Model", options: ["Dzire", "Ertiga", "Amaze", "V9600", "Crysta", "Hycross", "Urbania", "Fortuner"], name: "model" },
+                                    { label: "Seats", options: ["4", "6", "7", "17", "45"], name: "seats", format: val => `${val} Seats` },
+                                    { label: "Price", options: ["2500", "4000", "4500", "7000", "10000", "15000"], name: "price", format: val => `₹ ${Number(val).toLocaleString("en-IN")}` }
                                 ].map((filter, idx) => (
                                     <div className="mb-3" key={idx}>
                                         <strong>{filter.label}</strong>
