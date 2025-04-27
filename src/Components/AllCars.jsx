@@ -290,8 +290,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                                         <div className='modal-body text-start'>
                                                             {/* You can put more fare breakdown info here */}
                                                             <div className='baseFareContainer'>
-                                                                The Price applies only if you cover at least 300 km per day for outstation trips.
-                                                                <li>{carDetails?.baseFare}</li>
+                                                                 <div className='mb-1'>The Price applies only if you cover at least 300 km per day for outstation trips.</div>
+                                                                <li className='mb-1'>{carDetails?.baseFare}</li>
                                                                 <div className='d-flex align-items-center'><div><img className='tollIcon' src={toll} alt='toll' /></div> <div className='mx-2'>Excluding toll Charges</div></div>
                                                             </div>
                                                         </div>
