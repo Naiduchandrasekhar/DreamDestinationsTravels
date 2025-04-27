@@ -392,5 +392,33 @@ footer a:hover {
 
   .modalHeadingFareDetails{
     font-size: 14px !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
   }
+
+  .tollIcon{
+    width: 30px;
+  }
+
+  .baseFareContainer{
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .whatsUpIcon{
+    width: 20px;
+  }
+
+  .baseFareContactBtn{
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 12px !important;
+  }
+
+  .modal-dialog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+

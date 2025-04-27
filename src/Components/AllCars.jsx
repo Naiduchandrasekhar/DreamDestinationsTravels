@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import carFilterIcon from "../Images/carFilterIcon.png";
 import seatsIcon from "../Images/seatsIcon.png";
+import whatsUpIcon from "../Images/whatsUpIcon.png";
 import luggageIcon from "../Images/luggageIcon.png";
 import carwalDzireImage from "../Images/carwaleDzireImage.jpg";
 import urbaniaVanImage from "../Images/urbaniaVanImage.jpg";
@@ -8,6 +9,7 @@ import amazeRedCar from "../Images/amazeRedCar.jpg";
 import fortunerCar from "../Images/fortunerCar.jpg";
 import volovoBus from "../Images/volovoBus.jpg";
 import memberIcon from "../Images/memberIcon.png"
+import toll from "../Images/toll.png"
 import grandVitaraCarImage from "../Images/grandVitaraCarImage.webp";
 import ertigaCarWaleImage from "../Images/ertigaCarWaleImage.webp";
 import swiftVDICarwaleImage from "../Images/swiftVDICarwale.webp";
@@ -28,6 +30,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             price: "2500",
             seats: "4",
             luggage: "2",
+            baseFare: "14/per KM"
         },
 
         {
@@ -37,7 +40,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: amazeRedCar,
             price: "2500",
             seats: "4",
-            luggage: "2"
+            luggage: "2",
+            baseFare: "14/per KM"
         },
         {
             id: 3,
@@ -46,7 +50,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: ertigaCarWaleImage,
             price: "4000",
             seats: "6",
-            luggage: "3"
+            luggage: "3",
+            baseFare: "18/per KM"
         },
         {
             id: 4,
@@ -55,7 +60,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: innovaCrystaCarwaleImage,
             price: "4500",
             seats: "7",
-            luggage: "3"
+            luggage: "3",
+            baseFare: "20/per KM"
         },
         {
             id: 5,
@@ -64,7 +70,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: innovaHycrosCarWaleImage,
             price: "4500",
             seats: "7",
-            luggage: "3"
+            luggage: "3",
+            baseFare: "20/per KM"
         },
         {
             id: 6,
@@ -73,7 +80,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: fortunerCar,
             price: "10000",
             seats: "7",
-            luggage: "3"
+            luggage: "3",
+            baseFare: "45/per KM"
         },
         {
             id: 7,
@@ -82,7 +90,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: urbaniaVanImage,
             price: "7000",
             seats: "17",
-            luggage: "20"
+            luggage: "20",
+            baseFare: "35/per KM"
         },
         {
             id: 8,
@@ -91,7 +100,8 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             image: volovoBus,
             price: "15000",
             seats: "45",
-            luggage: "50"
+            luggage: "50",
+            baseFare: "95/per KM"
         }
     ];
 
@@ -220,79 +230,91 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                         </div>
                     </div>
                     <div className='d-flex justify-content-center justify-content-lg-start align-items-start'>
-                        <div className={`${hideFilterSection ? "col-lg-12" : "col-lg-9"} d-flex justify-content-center justify-content-lg-start flex-wrap`}>
+                        <div className={`${hideFilterSection ? "col-lg-12" : "col-lg-9  justify-content-lg-start"} d-flex justify-content-center flex-wrap`}>
                             {
                                 filteredCars?.map((carDetails) => {
                                     return (
                                         <div key={carDetails?.id} className='m-1 text-center fontSize13 fontWeight600 card p-1'>
-                                        <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
-                                        <div className='d-flex justify-content-between align-items-center'>
-                                            <div className='text-start'>
-                                                <div className='text-decoration-underline cursorPointer'>{carDetails?.brand} {carDetails?.model}</div>
-                                                <div className='d-flex align-items-center'>
+                                            <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
+                                            <div className='d-flex justify-content-between align-items-center p-2'>
+                                                <div className='text-start'>
+                                                    <div className='cursorPointer'>{carDetails?.brand} {carDetails?.model}</div>
                                                     <div className='d-flex align-items-center'>
-                                                        <div>
-                                                            <img className='mx-1 memberIcon' src={memberIcon} alt='memberIcon' />
+                                                        <div className='d-flex align-items-center'>
+                                                            <div>
+                                                                <img className='mx-1 memberIcon' src={memberIcon} alt='memberIcon' />
+                                                            </div>
+                                                            <div>{carDetails?.seats}</div>
                                                         </div>
-                                                        <div>{carDetails?.seats}</div>
+                                                        <div className='d-flex align-items-center mx-2'>
+                                                            <div>
+                                                                <img className='mx-1 memberIcon' src={luggageIcon} alt='luggageIcon' />
+                                                            </div>
+                                                            <div>{carDetails?.luggage}</div>
+                                                        </div>
                                                     </div>
-                                                    <div className='d-flex align-items-center mx-2'>
-                                                        <div>
-                                                            <img className='mx-1 memberIcon' src={luggageIcon} alt='luggageIcon' />
-                                                        </div>
-                                                        <div>{carDetails?.luggage}</div>
+                                                </div>
+                                                <div className='text-end'>
+                                                    <div className='text-decoration-underline cursorPointer'  data-bs-toggle='modal'
+                                                        data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}>
+                                                        <span className='fontSize11'>starts from</span> ₹{parseFloat(carDetails?.price)?.toLocaleString('en-IN')}
+                                                    </div>
+                                                    <div
+                                                        className='text-decoration-underline cursorPointer'
+                                                        data-bs-toggle='modal'
+                                                        data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}
+                                                    >
+                                                        Base Fare
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='text-end'>
-                                                <div className='text-decoration-underline cursorPointer'>
-                                                    <span className='fontSize11'>starts from</span> ₹{carDetails?.price?.toLocaleString('en-IN')}
-                                                </div>
-                                                <div
-                                                    className='text-decoration-underline cursorPointer'
-                                                    data-bs-toggle='modal'
-                                                    data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}
-                                                >
-                                                    Base Fare
+
+                                            {/* Modal */}
+                                            <div
+                                                className='modal fade'
+                                                id={carDetails?.model?.replace(/\s+/g, '_')}
+                                                data-bs-backdrop='static'
+                                                data-bs-keyboard='false'
+                                                tabIndex='-1'
+                                                aria-labelledby={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}
+                                                aria-hidden='true'
+                                            >
+                                                <div className='modal-dialog'>
+                                                    <div className='modal-content'>
+                                                        <div className='modal-header'>
+                                                            <h1 className='modalHeadingFareDetails' id={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}>
+                                                                {carDetails?.brand} {carDetails?.model} - Fare Details
+                                                            </h1>
+                                                            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                        </div>
+                                                        <div className='modal-body text-start'>
+                                                            {/* You can put more fare breakdown info here */}
+                                                            <div className='baseFareContainer'>
+                                                                The Price applies only if you cover at least 300 km per day for outstation trips.
+                                                                <li>{carDetails?.baseFare}</li>
+                                                                <div className='d-flex align-items-center'><div><img className='tollIcon' src={toll} alt='toll' /></div> <div className='mx-2'>Excluding toll Charges</div></div>
+                                                            </div>
+                                                        </div>
+                                                        <div className='modal-footer'>
+                                                            <button type='button' className='btn btn-secondary fontSize13' data-bs-dismiss='modal'>
+                                                                Close
+                                                            </button>
+                                                            <div className='d-flex justify-content-center justify-content-center p-2'>
+                                                                <a
+                                                                    href="https://wa.me/918790535149"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className='text-decoration-none'
+                                                                >
+                                                                    <button className='baseFareContactBtn fontSize13 d-flex align-items-center text-decoration-none'> <div><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /></div> <div className='mx-2'>Book Now</div></button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    
-                                        {/* Modal */}
-                                        <div
-                                            className='modal fade'
-                                            id={carDetails?.model?.replace(/\s+/g, '_')}
-                                            data-bs-backdrop='static'
-                                            data-bs-keyboard='false'
-                                            tabIndex='-1'
-                                            aria-labelledby={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}
-                                            aria-hidden='true'
-                                        >
-                                            <div className='modal-dialog'>
-                                                <div className='modal-content'>
-                                                    <div className='modal-header'>
-                                                        <h1 className='modalHeadingFareDetails' id={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}>
-                                                            {carDetails?.brand} {carDetails?.model} - Fare Details
-                                                        </h1>
-                                                        <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                                    </div>
-                                                    <div className='modal-body text-start'>
-                                                        {/* You can put more fare breakdown info here */}
-                                                        Base fare details for {carDetails?.model}
-                                                    </div>
-                                                    <div className='modal-footer'>
-                                                        <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>
-                                                            Close
-                                                        </button>
-                                                        <button type='button' className='btn btn-primary'>
-                                                            Understood
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+
                                     )
                                 })
                             }

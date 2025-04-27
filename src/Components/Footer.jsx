@@ -1,4 +1,6 @@
 import React from "react";
+import whatsUpIcon from "../Images/whatsUpIcon.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -16,17 +18,28 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="fw-semibold">Quick Links</h6>
             <ul className="list-unstyled">
-              <li><a href="#" className="text-white text-decoration-none">Home</a></li>
-              <li><a href="#" className="text-white text-decoration-none">Our Cars</a></li>
-              <li><a href="#" className="text-white text-decoration-none">Contact Us</a></li>
+              <Link to="/" className="text-decoration-none"><div  className="text-white">Home</div></Link>
+              <Link to="/OurCars" className="text-decoration-none"><div className="text-white">Our Cars</div></Link>
+              <Link to="/Contact" className="text-decoration-none"><div className="text-white">Contact Us</div></Link>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="col-md-4 mb-3">
             <h6 className="fw-semibold">Contact</h6>
-            <p>Email: info@dreamdestination.com</p>
-            <p>Phone: +1 234 567 890</p>
+            <div>Email: info@dreamdestination.com</div>
+            <div>
+            <div className='d-flex p-1'>
+              <a
+                href="https://wa.me/918790535149"
+                target="_blank"
+                rel="noopener noreferrer"
+                className='text-decoration-none'
+              >
+                <button className='baseFareContactBtn w-100 fontSize13 d-flex align-items-center text-decoration-none'> <div><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /></div> <div className='mx-2'>Book Now</div></button>
+              </a>
+            </div>
+            </div>
             <p>Location: 123 Dream St, Travel City, TX</p>
           </div>
 
