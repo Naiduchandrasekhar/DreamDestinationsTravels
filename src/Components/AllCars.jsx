@@ -9,6 +9,7 @@ import amazeRedCar from "../Images/amazeRedCar.jpg";
 import fortunerCar from "../Images/fortunerCar.jpg";
 import volovoBus from "../Images/volovoBus.jpg";
 import memberIcon from "../Images/memberIcon.png"
+import searchLogo from "../Images/searchLogo.png"
 import toll from "../Images/toll.png"
 import grandVitaraCarImage from "../Images/grandVitaraCarImage.webp";
 import ertigaCarWaleImage from "../Images/ertigaCarWaleImage.webp";
@@ -30,7 +31,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             price: "2500",
             seats: "4",
             luggage: "2",
-            baseFare: "14/per KM"
+            baseFare: "14/- per KM"
         },
 
         {
@@ -41,37 +42,37 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             price: "2500",
             seats: "4",
             luggage: "2",
-            baseFare: "14/per KM"
+            baseFare: "14/- per KM"
         },
         {
             id: 3,
             brand: "Maruti Suzuki",
             model: "Ertiga",
             image: ertigaCarWaleImage,
-            price: "4000",
+            price: "3500",
             seats: "6",
             luggage: "3",
-            baseFare: "18/per KM"
+            baseFare: "18/- per KM"
         },
         {
             id: 4,
             brand: "Toyota",
-            model: "Crysta",
+            model: "Innova Crysta",
             image: innovaCrystaCarwaleImage,
-            price: "4500",
+            price: "4000",
             seats: "7",
             luggage: "3",
-            baseFare: "20/per KM"
+            baseFare: "20/- per KM"
         },
         {
             id: 5,
             brand: "Toyota",
-            model: "Hycross",
+            model: "Innova Hycross",
             image: innovaHycrosCarWaleImage,
             price: "4500",
             seats: "7",
             luggage: "3",
-            baseFare: "20/per KM"
+            baseFare: "20/- per KM"
         },
         {
             id: 6,
@@ -81,27 +82,27 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             price: "10000",
             seats: "7",
             luggage: "3",
-            baseFare: "45/per KM"
+            baseFare: "45/- per KM"
         },
         {
             id: 7,
-            brand: "Force Motors",
-            model: "Urbania",
+            brand: "17 Seater",
+            model: "Tempo Traveller",
             image: urbaniaVanImage,
             price: "7000",
             seats: "17",
             luggage: "20",
-            baseFare: "35/per KM"
+            baseFare: "35/- per KM"
         },
         {
             id: 8,
-            brand: "Volovo",
-            model: "V9600",
+            brand: "45 Seater",
+            model: "Bus",
             image: volovoBus,
             price: "15000",
             seats: "45",
             luggage: "50",
-            baseFare: "95/per KM"
+            baseFare: "95/- per KM"
         }
     ];
 
@@ -184,7 +185,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
             <div className='container'>
                 <div className='py-3'>
                     {hideFilterSection ? "" : <div className='d-flex d-lg-none justify-content-center align-items-center mb-1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
-                        <button className="btn filterButtonText" type="button" >Filter your favourite car</button>
+                        <button className="btn filterButtonText" type="button" ><img className='searchLogo' src={searchLogo} alt='searchLogo' /> Filter your favourite car</button>
                         <div className='mx-2'>
                             <img className='carFilterIcon' src={carFilterIcon} alt='carFilterIcon' />
                         </div>
@@ -198,10 +199,10 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                             <div className="d-flex d-lg-none d-flex flex-column justify-content-center filterCarSectionContainer">
                                 {/* Filter Section Template */}
                                 {[
-                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Volovo", "Honda"], name: "brand" },
-                                    { label: "Model", options: ["Dzire", "Ertiga", "Amaze", "V9600", "Crysta", "Hycross", "Urbania", "Fortuner"], name: "model" },
+                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Honda", "17 Seater", "45 Seater"], name: "brand" },
+                                    { label: "Model", options: ["Dzire", "Ertiga", "Amaze", "Bus", "Innova Crysta", "Innova Hycross", "Tempo Traveller", "Fortuner"], name: "model" },
                                     { label: "Seats", options: ["4", "6", "7", "17", "45"], name: "seats", format: val => `${val} Seats` },
-                                    { label: "Price", options: ["2500", "4000", "4500", "7000", "10000", "15000"], name: "price", format: val => `₹ ${Number(val).toLocaleString("en-IN")}` }
+                                    { label: "Price", options: ["2500", "3500", "4000", "4500", "7000", "10000", "15000"], name: "price", format: val => `₹ ${Number(val).toLocaleString("en-IN")}` }
                                 ].map((filter, idx) => (
                                     <div className="mb-3" key={idx}>
                                         <strong>{filter.label}</strong>
@@ -238,7 +239,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                             <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
                                             <div className='d-flex justify-content-between align-items-center p-2'>
                                                 <div className='text-start'>
-                                                    <div className='cursorPointer'>{carDetails?.brand} {carDetails?.model}</div>
+                                                    <div className='cursorPointer text-truncate'  style={{ maxWidth: '150px' }}>{carDetails?.brand} {carDetails?.model}</div>
                                                     <div className='d-flex align-items-center'>
                                                         <div className='d-flex align-items-center'>
                                                             <div>
@@ -264,7 +265,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                                         data-bs-toggle='modal'
                                                         data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}
                                                     >
-                                                        Base Fare
+                                                        Base Price
                                                     </div>
                                                 </div>
                                             </div>
@@ -290,8 +291,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                                         <div className='modal-body text-start'>
                                                             {/* You can put more fare breakdown info here */}
                                                             <div className='baseFareContainer'>
-                                                                 <div className='mb-1'>The Price applies only if you cover at least 300 km per day for outstation trips.</div>
-                                                                <li className='mb-1'>{carDetails?.baseFare}</li>
+                                                                 <div className='mb-1'>Rs {carDetails?.baseFare} for outstation trips (min 300 kms travels)</div>
                                                                 <div className='d-flex align-items-center'><div><img className='tollIcon' src={toll} alt='toll' /></div> <div className='mx-2'>Excluding toll Charges</div></div>
                                                             </div>
                                                         </div>
@@ -326,10 +326,10 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
 
                                 {/* Filter Section Template */}
                                 {[
-                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Force Motors", "Volovo", "Honda"], name: "brand" },
-                                    { label: "Model", options: ["Dzire", "Ertiga", "Amaze", "V9600", "Crysta", "Hycross", "Urbania", "Fortuner"], name: "model" },
+                                    { label: "Brand", options: ["Maruti Suzuki", "Toyota", "Honda", "17 Seater", "45 Seater"], name: "brand" },
+                                    { label: "Model", options: ["Dzire", "Ertiga", "Amaze", "Bus", "Innova Crysta", "Innova Hycross", "Tempo Traveller", "Fortuner"], name: "model" },
                                     { label: "Seats", options: ["4", "6", "7", "17", "45"], name: "seats", format: val => `${val} Seats` },
-                                    { label: "Price", options: ["2500", "4000", "4500", "7000", "10000", "15000"], name: "price", format: val => `₹ ${Number(val).toLocaleString("en-IN")}` }
+                                    { label: "Price", options: ["2500", "3500", "4000", "4500", "7000", "10000", "15000"], name: "price", format: val => `₹ ${Number(val).toLocaleString("en-IN")}` }
                                 ].map((filter, idx) => (
                                     <div className="mb-3" key={idx}>
                                         <strong>{filter.label}</strong>

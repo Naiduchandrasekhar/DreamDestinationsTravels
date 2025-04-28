@@ -422,3 +422,13 @@ footer a:hover {
     min-height: 100vh;
   }
 
+  .offcanvas{
+    --bs-offcanvas-height: 40vh !important;
+    --bs-offcanvas-padding-x: 10px !important;
+    --bs-offcanvas-padding-y: 4px !important;
+    padding-top: 10px;
+  }
+
+  .searchLogo{
+    width: 20px;
+  }
