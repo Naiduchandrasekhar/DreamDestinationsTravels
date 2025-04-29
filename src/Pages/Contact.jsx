@@ -1,9 +1,19 @@
 import React from 'react';
 import undrawContactUs from "../Images/undrawContactUs.png"
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
   return (
-    <div className="container pt-5 py-5">
+    <div>
+       <Helmet>
+        <title>Contact Us | Vizag Car Rentals - Dream Destinations Travels</title>
+        <meta name="description" content="Get in touch with Dream Destinations Travels for car rentals, airport pickups, and tour packages in Vizag. Call or email us today." />
+        <meta property="og:title" content="Contact Us | Vizag Car Rentals - Dream Destinations Travels" />
+        <meta property="og:description" content="Reach out to us for affordable and reliable car rental services in Visakhapatnam. We’re here to help!" />
+        <meta property="og:image" content="https://yourwebsite.com/images/share-preview.jpg" />
+        <meta property="og:url" content="https://yourwebsite.com/contact" />
+      </Helmet>
+       <div className="container pt-5 py-5">
       <div className="mb-5 pt-5">
         <h2 className="display-5 fw-bold text-dark">Contact Dream Destinations Travels</h2>
         <p className="text-muted">
@@ -42,6 +52,7 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
+       </div>
     </div>
   );
 };

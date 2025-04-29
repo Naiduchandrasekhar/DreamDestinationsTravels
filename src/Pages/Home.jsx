@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import LoaderContainer from "../Components/LoaderContainer"
+import { Helmet } from 'react-helmet';
 
 // import planeEritaCarImage from "../Images/planeEritaCarImage.png";
 // import planeDzireCarImage from "../Images/planeDzireCarImage.png";
@@ -79,11 +80,20 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false)
-    }, 3000)
+    }, 1000)
   }, [])
 
   return (
-    <div className=''>
+    <div>
+      <Helmet>
+        <title>Vizag Car Rentals | Affordable Self Drive & Airport Pickup in Visakhapatnam</title>
+        <meta name="description" content="Book Vizag car rentals and airport pickups at the best price. Self-drive and chauffeur options. Trusted, budget-friendly car hire service in Visakhapatnam." />
+        <meta property="og:title" content="Vizag Car Rentals | Affordable Self Drive & Airport Pickup" />
+        <meta property="og:description" content="Book reliable self-drive cars and airport pickups in Vizag. Easy booking, best rates, no hassle." />
+        <meta property="og:image" content="https://yourwebsite.com/images/share-preview.jpg" />
+        <meta property="og:url" content="https://yourwebsite.com" />
+      </Helmet>
+      <div className=''>
       {loader ? <LoaderContainer /> :
         <div>
           <div className='firstContainer d-flex justify-content-center position-relative'>
@@ -158,7 +168,7 @@ const Home = () => {
             <div className='d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap'>
               {travelPlaces?.map((place, index) => {
                 return (
-                  <div className='m-1'>
+                  <div className='m-1' key={index}>
                     <TourCard image={place?.img} description={place?.description} title={place?.title} />
                   </div>
                 )
@@ -167,6 +177,7 @@ const Home = () => {
           </div>
         </div>
       }
+      </div>
     </div>
   )
 }
