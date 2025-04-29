@@ -190,6 +190,10 @@ footer a:hover {
 }
 
 @media screen and (max-width: 992px) {
+  .undrawContactUs{
+    height: 170px !important;
+    margin-bottom: 10px;
+  }
   .filterCarSectionContainer{
     margin-left: 0px !important;
   }
@@ -431,4 +435,9 @@ footer a:hover {
 
   .searchLogo{
     width: 20px;
+  }
+
+  .undrawContactUs{
+    height: 200px;
+    border-radius: 8px;
   }

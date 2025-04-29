@@ -1,4 +1,5 @@
 import React from 'react';
+import undrawContactUs from "../Images/undrawContactUs.png"
 
 const Contact = () => {
   return (
@@ -10,7 +11,8 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="bg-light p-4 rounded shadow-sm mb-5">
+      <div className="bg-light p-3 rounded rounded-3 shadow-sm mb-5 d-flex flex-column flex-lg-row justify-content-around align-items-center">
+        <div className='order-1 order-lg-0'>
         <div className="mb-3">
           <h5 className="fw-semibold text-secondary">Email</h5>
           <p className="text-dark">info@dreamdestination.com</p>
@@ -22,6 +24,10 @@ const Contact = () => {
         <div className="mb-3">
           <h5 className="fw-semibold text-secondary">Address</h5>
           <p className="text-dark">Maddilapalem, Visakhapatnam, Andhra Pradesh, India</p>
+        </div>
+      </div>
+        <div className='order-0 order-lg-1'>
+          <img className='undrawContactUs' src={undrawContactUs} alt='undrawContactUs' />
         </div>
       </div>
 
