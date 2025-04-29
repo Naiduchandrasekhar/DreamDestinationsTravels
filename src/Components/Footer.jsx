@@ -40,7 +40,7 @@ const Footer = () => {
               </a>
             </div>
             </div>
-            <p>Location: 123 Dream St, Travel City, TX</p>
+            <p>Maddilapalem, Visakhapatnam, Andhra Pradesh, India</p>
           </div>
 
         </div>
