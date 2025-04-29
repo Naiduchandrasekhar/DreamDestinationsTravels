@@ -119,12 +119,12 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
         setFilterData((prev) => {
             const updatedFilters = { ...prev };
 
-            // Step 1: Update the clicked filter
+            // Step 1: Update the clicked filter (models)
             const currentValues = new Set(prev[name] || []);
             checked ? currentValues.add(value) : currentValues.delete(value);
             updatedFilters[name] = Array.from(currentValues);
 
-            // Step 2: Get matching cars based on the clicked value only
+            // Step 2: Get matching cars based on the clicked value (model)
             const clickedValueCars = carData.filter(car => String(car[name]) === value);
 
             // Step 3: Collect related filter values from those cars
@@ -147,14 +147,33 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                 }
             });
 
+            // Step 4: Ensure brand stays in filter only if there's at least one model for that brand
+            const remainingModels = carData.filter(car =>
+                relatedModels.has(car.model)
+            );
+            const brandsToKeep = new Set();
+            remainingModels.forEach(car => brandsToKeep.add(car.brand));
+
+            // Step 5: Update the filters (brand, model, seats, price)
+            updatedFilters.brand = Array.from(brandsToKeep);
+
+            // Step 6: Ensure seats and price filters are valid based on remaining cars
+            const remainingSeats = new Set(remainingModels.map(car => String(car.seats)));
+            const remainingPrices = new Set(remainingModels.map(car => String(car.price)));
+
+            updatedFilters.seats = Array.from(remainingSeats);
+            updatedFilters.price = Array.from(remainingPrices);
+
+            // Return updated filter values
             return {
-                brand: Array.from(relatedBrands),
+                brand: Array.from(brandsToKeep),
                 model: Array.from(relatedModels),
-                seats: Array.from(relatedSeats),
-                price: Array.from(relatedPrices),
+                seats: Array.from(remainingSeats),
+                price: Array.from(remainingPrices),
             };
         });
     };
+
 
     const handleClearAllFilters = () => {
         setFilterData({
@@ -239,7 +258,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                             <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
                                             <div className='d-flex justify-content-between align-items-center p-2'>
                                                 <div className='text-start'>
-                                                    <div className='cursorPointer text-truncate'  style={{ maxWidth: '150px' }}>{carDetails?.brand} {carDetails?.model}</div>
+                                                    <div className='cursorPointer text-truncate' style={{ maxWidth: '150px' }}>{carDetails?.brand} {carDetails?.model}</div>
                                                     <div className='d-flex align-items-center'>
                                                         <div className='d-flex align-items-center'>
                                                             <div>
@@ -256,7 +275,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                                     </div>
                                                 </div>
                                                 <div className='text-end'>
-                                                    <div className='text-decoration-underline cursorPointer'  data-bs-toggle='modal'
+                                                    <div className='text-decoration-underline cursorPointer' data-bs-toggle='modal'
                                                         data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}>
                                                         <span className='fontSize11'>starts from</span> ₹{parseFloat(carDetails?.price)?.toLocaleString('en-IN')}
                                                     </div>
@@ -291,7 +310,7 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                                                         <div className='modal-body text-start'>
                                                             {/* You can put more fare breakdown info here */}
                                                             <div className='baseFareContainer'>
-                                                                 <div className='mb-1'>Rs {carDetails?.baseFare} for outstation trips (min 300 kms travels)</div>
+                                                                <div className='mb-1'>₹ {carDetails?.baseFare} for outstation trips (min 300 kms travels)</div>
                                                                 <div className='d-flex align-items-center'><div><img className='tollIcon' src={toll} alt='toll' /></div> <div className='mx-2'>Excluding toll Charges</div></div>
                                                             </div>
                                                         </div>
