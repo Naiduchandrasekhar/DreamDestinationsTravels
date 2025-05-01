@@ -40,42 +40,80 @@ import AllCars from '../Components/AllCars';
 const vizagTourImages = [tenatiPark, simhachalamTemple, divisBeachImage]
 const arakuTourImages = [arakuImage, arakuLandscape, arakuWaterfalls, borraCaves]
 
+// const travelPlaces = [
+//   {
+//     title: "Araku Valley",
+//     img: arakuLandscape,
+//     description: "A picturesque hill station nestled in the Eastern Ghats, Araku Valley is known for its coffee plantations, tribal culture, and stunning waterfalls. A perfect getaway from Visakhapatnam.",
+//     path:"/araku-package"
+//   },
+//   {
+//     title: "Lambasingi",
+//     img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/Misty-Lambasingi.jpg",
+//     description: "Often called the 'Kashmir of Andhra Pradesh', Lambasingi is a tiny village known for its chilly weather, misty mornings, and scenic landscapes. A rare place in South India where it gets close to freezing temperatures in winter.",
+//     path:"/lambasingi-package"
+//   },
+//   {
+//     title: "Vanajangi",
+//     img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/30-VZ-VANJANGI.jpg",
+//     description: "A hidden gem located in the Eastern Ghats, Vanajangi offers a magical sunrise view above the clouds. It’s a favorite trekking spot for nature lovers and photographers.",
+//     path:"/vanajangi-package"
+//   },
+//   {
+//     title: "Visakhapatnam Temple Tour Packages",
+//     img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/download-3.jpg",
+//     description: "Explore the divine side of Visakhapatnam with curated temple tour packages. Visit ancient temples like Simhachalam, Sri Kanaka Mahalakshmi, and ISKCON to experience spiritual bliss.",
+//     path:"/temple-package"
+//   },
+//   {
+//     title: "Visakhapatnam City Sightseeing Tour Packages",
+//     img: vizagCity,
+//     description: "Discover the charm of Vizag through its popular attractions—RK Beach, Kailasagiri, Submarine Museum, and more. A perfect mix of city vibes and coastal beauty.",
+//     path:"/vizag-tour-package"
+//   },
+//   // {
+//   //   title: "Odisha Tour",
+//   //   img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/duduma-koraput-odisha-2-attr-hero.jpg",
+//   //   description: "Explore the cultural richness and natural beauty of Odisha—from the majestic Duduma Waterfalls in Koraput to ancient temples, tribal traditions, and scenic landscapes. This tour offers a soulful journey through Eastern India’s hidden gems.",
+//   //   path:"/odisha-package"
+//   // },
+// ];
+
 const travelPlaces = [
   {
     title: "Araku Valley",
     img: arakuLandscape,
-    description: "A picturesque hill station nestled in the Eastern Ghats, Araku Valley is known for its coffee plantations, tribal culture, and stunning waterfalls. A perfect getaway from Visakhapatnam.",
-    path:"/araku-package"
+    description:
+      "Araku Valley is a scenic hill station in the Eastern Ghats, known for coffee plantations, tribal culture, and lush waterfalls. A peaceful retreat just hours from Visakhapatnam.",
+    path: "/araku-package",
   },
   {
     title: "Lambasingi",
     img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/Misty-Lambasingi.jpg",
-    description: "Often called the 'Kashmir of Andhra Pradesh', Lambasingi is a tiny village known for its chilly weather, misty mornings, and scenic landscapes. A rare place in South India where it gets close to freezing temperatures in winter.",
-    path:"/lambasingi-package"
+    description:
+      "Lambasingi is a charming village with misty mornings, cool temperatures, and lush landscapes. Known as the 'Kashmir of Andhra', it's a unique winter destination in South India.",
+    path: "/lambasingi-package",
   },
   {
     title: "Vanajangi",
     img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/30-VZ-VANJANGI.jpg",
-    description: "A hidden gem located in the Eastern Ghats, Vanajangi offers a magical sunrise view above the clouds. It’s a favorite trekking spot for nature lovers and photographers.",
-    path:"/vanajangi-package"
+    description:
+      "Vanajangi offers breathtaking sunrise views above the clouds. Nestled in the Eastern Ghats, it's a serene trekker’s paradise and perfect for nature photography and quiet escapes.",
+    path: "/vanajangi-package",
   },
   {
     title: "Visakhapatnam Temple Tour Packages",
     img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/download-3.jpg",
-    description: "Explore the divine side of Visakhapatnam with curated temple tour packages. Visit ancient temples like Simhachalam, Sri Kanaka Mahalakshmi, and ISKCON to experience spiritual bliss.",
-    path:"/temple-package"
+    description:
+      "Discover Vizag’s spiritual side by visiting temples like Simhachalam, Kanaka Mahalakshmi, and ISKCON. These guided temple tours offer peaceful and culturally rich experiences across the city.",
+    path: "/temple-package",
   },
   {
     title: "Visakhapatnam City Sightseeing Tour Packages",
     img: vizagCity,
-    description: "Discover the charm of Vizag through its popular attractions—RK Beach, Kailasagiri, Submarine Museum, and more. A perfect mix of city vibes and coastal beauty.",
-    path:"/vizag-tour-package"
-  },
-  {
-    title: "Odisha Tour",
-    img: "https://lightsalmon-okapi-437889.hostingersite.com/wp-content/uploads/2025/03/duduma-koraput-odisha-2-attr-hero.jpg",
-    description: "Explore the cultural richness and natural beauty of Odisha—from the majestic Duduma Waterfalls in Koraput to ancient temples, tribal traditions, and scenic landscapes. This tour offers a soulful journey through Eastern India’s hidden gems.",
-    path:"/odisha-package"
+    description:
+      "Explore Vizag’s top attractions including RK Beach, Kailasagiri, and Submarine Museum. These full-day city tours offer a vibrant blend of culture, coastlines, and urban charm.",
+    path: "/vizag-tour-package",
   },
 ];
 
@@ -172,7 +210,7 @@ const Home = () => {
           <AllCars hideViewMoreCarsBtn={false} hideFilterSection={true} />
           <div className='p-3 container'>
             <div className='tourPackagesTite p-2 my-2 text-center text-decoration-underline'>Our Tour Packages</div>
-            <div className='d-flex justify-content-center justify-content-lg-between align-items-center flex-wrap'>
+            <div className='d-flex justify-content--sm-center justify-content-lg-between align-items-center flex-wrap'>
               {travelPlaces?.map((place, index) => {
                 return (
                   <div className='m-1' key={index}>

@@ -4,28 +4,13 @@ import innovaCrystaCarwaleImage from '../Images/innovaCrystaCarwaleImage.webp';
 import ertigaCarWaleImage from '../Images/ertigaCarWaleImage.webp';
 import amazeRedCar from '../Images/amazeRedCar.jpg';
 import carwalDzireImage from '../Images/carwaleDzireImage.jpg';
-import arakuLandscape from "../Images/arakuLandscape.jpg"
+import urbaniaVanImage from "../Images/urbaniaVanImage.jpg";
+import whatsUpIcon from "../Images/whatsUpIcon.png";
 
 const carPackages = [
   {
-    name: "Innova Crysta",
-    price: "Start from ₹ 8,000",
-    description: "Accommodates 7 passengers. Ideal for Lambasingi or Vanajagi tours. Minimum 12 hours & 260 km.",
-    pax: "7 Max",
-    type: "SUV",
-    image: innovaCrystaCarwaleImage,
-  },
-  {
-    name: "Ertiga",
-    price: "Start from ₹ 7,000",
-    description: "Accommodates 6 passengers. Great for Lambasingi or Vanajagi trips. Minimum 12 hours & 260 km.",
-    pax: "6 Max",
-    type: "SUV",
-    image: ertigaCarWaleImage,
-  },
-  {
     name: "Honda Amaze",
-    price: "Start from ₹ 5,000",
+    price: "₹ 5,000",
     description: "Accommodates 4 passengers. Comfortable ride for Lambasingi or Vanajagi tours. Minimum 12 hours & 260 km.",
     pax: "4 Max",
     type: "Sedan",
@@ -33,11 +18,35 @@ const carPackages = [
   },
   {
     name: "Swift Dzire",
-    price: "Start from ₹ 5,000",
+    price: "₹ 5,000",
     description: "Accommodates 4 passengers. Perfect for a cozy Lambasingi or Vanajagi ride. Minimum 12 hours & 260 km.",
     pax: "4 Max",
     type: "Sedan",
     image: carwalDzireImage,
+  },
+  {
+    name: "Ertiga",
+    price: "₹ 6,500",
+    description: "Accommodates 6 passengers. Great for Lambasingi or Vanajagi trips. Minimum 12 hours & 260 km.",
+    pax: "6 Max",
+    type: "SUV",
+    image: ertigaCarWaleImage,
+  },
+  {
+    name: "Innova Crysta",
+    price: "₹ 8,000",
+    description: "Accommodates 7 passengers. Ideal for Lambasingi or Vanajagi tours. Minimum 12 hours & 260 km.",
+    pax: "7 Max",
+    type: "SUV",
+    image: innovaCrystaCarwaleImage,
+  },
+  {
+    name: "17 Seater",
+    price: "₹ 8,000",
+    description: "Accommodates 7 passengers. Ideal for Lambasingi or Vanajagi tours. Minimum 12 hours & 260 km.",
+    pax: "17 Max",
+    type: "Van",
+    image: urbaniaVanImage,
   },
 ];
 
@@ -51,16 +60,18 @@ const ArakuPackage = () => {
       <h1 className="pt-5 mb-4">Araku Tour Packages</h1>
 
       <div>
-      <p className="text-muted mb-4">
-        Discover the serene beauty of Araku Valley with our exclusive tour packages. Explore misty hills, coffee plantations,
-        and tribal culture. Choose from a variety of comfortable car options for a personalized travel experience.
-      </p>
+        <p className="text-muted mb-4">
+          Discover the serene beauty of Araku Valley with our exclusive tour packages. Explore misty hills, coffee plantations,
+          and tribal culture. Choose from a variety of comfortable car options for a personalized travel experience.
+        </p>
       </div>
       <img
-        src={arakuLandscape}
-        alt="Araku Valley"
-        className="img-fluid tourCard rounded mb-4"
+        src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Lambasingi_morning_fog.jpg"
+        alt="Lambasingi"
+        className="img-fluid rounded mb-4"
+        style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
       />
+
 
       <h2 className="mb-4">Available Vehicles</h2>
 
@@ -72,7 +83,7 @@ const ArakuPackage = () => {
               <th>Car Model</th>
               <th>Type</th>
               <th>Seats</th>
-              <th>Price</th>
+              <th>Starts from Price</th>
             </tr>
           </thead>
           <tbody>
@@ -93,6 +104,15 @@ const ArakuPackage = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div>
+        <a
+          href="https://wa.me/918790535149"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className='w-100 btn text-white bgLinearGradient'><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /> Contact Us</button>
+        </a>
       </div>
     </div>
   );

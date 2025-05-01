@@ -323,6 +323,7 @@ footer a:hover {
 
 .cardImage{
   width: 333px;
+  height: 172px;
   border-radius: 8px;
   object-fit: cover;
 }
