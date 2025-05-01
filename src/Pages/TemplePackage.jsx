@@ -42,7 +42,7 @@ const carPackages = [
   },
   {
     name: "17 Seater",
-    price: "₹ 8,000",
+    price: "₹ 10,000",
     description: "Accommodates 7 passengers. Ideal for Lambasingi or Vanajagi tours. Minimum 12 hours & 260 km.",
     pax: "17 Max",
     type: "Van",
