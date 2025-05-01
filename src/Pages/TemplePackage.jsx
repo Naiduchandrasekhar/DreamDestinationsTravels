@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const carPackages = [
   {
@@ -40,6 +40,9 @@ const carPackages = [
 ];
 
 const TemplePackage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="container py-5">
       <h1 className="pt-5 mb-4">Vizag Temple Tour Packages</h1>
