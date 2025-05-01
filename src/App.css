@@ -441,3 +441,8 @@ footer a:hover {
     height: 200px;
     border-radius: 8px;
   }
+
+  .packageCarImage{
+    width: 230px;
+    border-radius: 12px;
+  }

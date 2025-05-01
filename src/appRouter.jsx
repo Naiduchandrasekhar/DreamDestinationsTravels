@@ -6,6 +6,12 @@ import Home from "./Pages/Home"
 import Contact from "./Pages/Contact"
 import OurCars from "./Pages/OurCars"
 import { useEffect, useState } from "react"
+import ArakuPackage from './Pages/ArakuPackage';
+import LambasingiPackage from './Pages/LambasingiPackage';
+import VanajangiPackage from './Pages/VanajangiPackage';
+import TemplePackage from './Pages/TemplePackage';
+import VizagTourPackage from './Pages/VizagTourPackage';
+import OdishaPackage from './Pages/OdishaPackage';
 
 const AppLayout = () => {
 
@@ -34,6 +40,30 @@ const appRouter = createBrowserRouter([
             {
                 path: "/OurCars",
                 element: <OurCars />
+            },
+            {
+                path: "/araku-package",
+                element: <ArakuPackage />
+            },
+            {
+                path: "/lambasingi-package",
+                element: <LambasingiPackage />
+            },
+            {
+                path: "/vanajangi-package",
+                element: <VanajangiPackage />
+            },
+            {
+                path: "/temple-package",
+                element: <TemplePackage />
+            },
+            {
+                path: "/vizag-tour-package",
+                element: <VizagTourPackage />
+            },
+            {
+                path: "/odisha-package",
+                element: <OdishaPackage />
             }
         ]
     }
