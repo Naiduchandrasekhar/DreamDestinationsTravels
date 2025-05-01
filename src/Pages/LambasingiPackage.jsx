@@ -80,7 +80,7 @@ const LambasingiPackage = () => {
               <th>Car Model</th>
               <th>Type</th>
               <th>Seats</th>
-              <th>Price</th>
+              <th>Starts from Price</th>
             </tr>
           </thead>
           <tbody>
