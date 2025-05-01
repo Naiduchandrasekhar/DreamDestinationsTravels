@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import undrawContactUs from "../Images/undrawContactUs.png"
 import { Helmet } from 'react-helmet';
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
   return (
     <div>
        <Helmet>

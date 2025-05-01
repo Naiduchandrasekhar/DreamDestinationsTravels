@@ -190,6 +190,9 @@ footer a:hover {
 }
 
 @media screen and (max-width: 992px) {
+  .tableContainer{
+    font-size: 13px !important;
+  }
   .undrawContactUs{
     height: 170px !important;
     margin-bottom: 10px;
@@ -445,4 +448,8 @@ footer a:hover {
   .packageCarImage{
     width: 230px;
     border-radius: 12px;
+  }
+
+  .tableContainer{
+    font-size: 16px;
   }

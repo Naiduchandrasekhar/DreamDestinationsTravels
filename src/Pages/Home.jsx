@@ -84,6 +84,7 @@ const Home = () => {
   const [loader, setLoader] = useState(true)
 
   useEffect(() => {
+    window.scrollTo(0,0)
     setTimeout(() => {
       setLoader(false)
     }, 1000)
