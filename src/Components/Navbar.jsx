@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DreamDestinationLogo from "../Images/DreamDestinationLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import dayMode from "../Images/dayMode.png"
 
 const Navbar = () => {
@@ -10,7 +10,12 @@ const Navbar = () => {
     const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
     bsOffcanvas?.hide();
   };
+
+  const location = useLocation()
+  const pathName =  location?.pathname
+  console.log(pathName === "/OurCars");
   
+
   return (
     <div className="position-fixed top-0 w-100 z-2">
       <nav className="navbar navbar-expand-lg bg-body-tertiary p-0">
@@ -73,14 +78,14 @@ const Navbar = () => {
             </div>
             <div className="offcanvas-body offcanvas-body-container">
               <div className="navbar-nav justify-content-end align-items-start flex-grow-1 pe-3 fontSanserif">
-                <div className="m-2">
-                  <Link to="/" className="navbarPageNames" onClick={closeOffcanvas}>Home</Link>
+                <div className={`m-2`}>
+                  <Link to="/" className={`navbarPageNames ${pathName === "/" ? "borderBottomPages" : "text-decoration-none"}`} onClick={closeOffcanvas}>Home</Link>
                 </div>
                 <div className="m-2">
-                  <Link to="/OurCars" className="navbarPageNames" onClick={closeOffcanvas}>Our Cars</Link>
+                  <Link to="/OurCars" className={`navbarPageNames ${pathName === "/OurCars" ? "borderBottomPages" : "text-decoration-none"}`} onClick={closeOffcanvas}>Our Cars</Link>
                 </div>
                 <div className="m-2">
-                  <Link to="/Contact" className="navbarPageNames" onClick={closeOffcanvas}>Contact Us</Link>
+                  <Link to="/Contact" className={`navbarPageNames ${pathName === "/Contact" ? "borderBottomPages" : "text-decoration-none"}`} onClick={closeOffcanvas}>Contact Us</Link>
                 </div>
                 {/* <div className="m-2">
                   <img src={dayMode} alt="sunIcon" className="modesIcon" />

@@ -210,7 +210,7 @@ const Home = () => {
           <AllCars hideViewMoreCarsBtn={false} hideFilterSection={true} />
           <div className='p-3 container'>
             <div className='tourPackagesTite p-2 my-2 text-center text-decoration-underline'>Our Tour Packages</div>
-            <div className='d-flex justify-content--sm-center justify-content-lg-between align-items-center flex-wrap'>
+            <div className='d-flex justify-content-sm-center justify-content-lg-between align-items-center flex-wrap'>
               {travelPlaces?.map((place, index) => {
                 return (
                   <div className='m-1' key={index}>

@@ -142,7 +142,6 @@ footer a:hover {
 }
 
 .navbarPageNames {
-  text-decoration: none !important;
   color: #ffffffff !important;
 }
 
@@ -453,4 +452,8 @@ footer a:hover {
 
   .tableContainer{
     font-size: 16px;
+  }
+
+  .borderBottomPages{
+    border-bottom: 1px soild #1d1414 !important;
   }
