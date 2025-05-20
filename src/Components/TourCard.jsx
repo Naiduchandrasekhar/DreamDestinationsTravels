@@ -9,7 +9,7 @@ const TourCard = ({ image, title, description, path }) => {
             <div className='my-1 p-2'><img src={image} alt={title} className='cardImage' /></div>
             <div className='my-1 p-2'>{description}</div>
             <div className='d-flex justify-content-center justify-content-center p-2'>
-                <button className='mx-lg-3 contactUsBtn bgLinearGradient' onClick={() => navigate(`${path}`)}>Book Now</button>
+                <button className='mx-lg-3 contactUsBtn bgLinearGradient' onClick={() => navigate(`${path}`)}>Price Details</button>
             </div>
         </div>
     )

@@ -189,6 +189,9 @@ footer a:hover {
 }
 
 @media screen and (max-width: 992px) {
+  .descriptionButtons{
+    width: 192px;
+  }
   .tableContainer{
     font-size: 13px !important;
   }

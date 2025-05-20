@@ -149,13 +149,13 @@ const Home = () => {
               <div className='firstDescriptionSubTitle'>
                 Experience stress-free travel with reliable airport pickups and personalized service, wherever you go.
               </div>
-              <div className='my-2 d-flex justify-content-around align-items-center'>
+              <div className='my-2 d-none d-lg-flex justify-content-around align-items-center'>
                 <a
                   href="https://wa.me/918790535149"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className='descriptionButtons bgLinearGradient'>Pickup from Airport</button>
+                  <button className='descriptionButtons bgLinearGradient'>Contact US</button>
                 </a>
                 <a
                   href="https://wa.me/918790535149"
@@ -170,6 +170,15 @@ const Home = () => {
                   rel="noopener noreferrer"
                 >
                   <button className='descriptionButtons bgLinearGradient'>Budget Friendly</button>
+                </a>
+              </div>
+              <div className='d-flex justify-content-center d-lg-none'>
+                 <a
+                  href="https://wa.me/918790535149"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className='descriptionButtons bgLinearGradient'>Contact Us</button>
                 </a>
               </div>
             </div>

@@ -36,7 +36,9 @@ const Contact = () => {
         </div>
         <div className="mb-3">
           <h5 className="fw-semibold text-secondary">Address</h5>
-          <p className="text-dark">Maddilapalem, Visakhapatnam, Andhra Pradesh, India</p>
+          <p className="text-dark">
+            14-170/1/9, Chinnamushidiwada, Pendurthi, Visakhapatnam, Andhra Pradesh 531173
+          </p>
         </div>
       </div>
         <div className='order-0 order-lg-1'>
@@ -49,7 +51,7 @@ const Contact = () => {
         <div className="ratio ratio-16x9 rounded overflow-hidden">
           <iframe
             title="Dream Destinations Travels Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.512039759343!2d83.31726847505586!3d17.738247292430624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943f90563f061%3A0x86b155e0fd4f9186!2sMaddilapalem%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530013!5e0!3m2!1sen!2sin!4v1714401707790!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.606017382681!2d83.19895307594597!3d17.810204090485666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3966e746ed7c7b%3A0xfeb9aa369c80379a!2s14-170%2F1%2F9%2C%20Chinnamushidiwada%2C%20Pendurthi%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20531173!5e0!3m2!1sen!2sin!4v1747761075997!5m2!1sen!2sin"
             allowFullScreen
             loading="lazy"
           ></iframe>

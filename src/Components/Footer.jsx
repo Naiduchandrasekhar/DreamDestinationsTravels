@@ -27,6 +27,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="col-md-4 mb-3">
             <h6 className="fw-semibold">Contact</h6>
+            <div>Phone Number : <a href="tel:+918790535149" className="text-success">+91 8790535149</a></div>
             <div>Email: info@dreamdestination.com</div>
             <div>
             <div className='d-flex p-1'>
