@@ -19,6 +19,7 @@ import mainFirstBgImage from "../Images/mainFirstBgImage.webp";
 import innovaHycrosCarWaleImage from "../Images/innovaHycrosCarWaleImage.webp"
 import xuvCarImage from "../Images/xuvCarImage.webp"
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 
 const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
@@ -250,94 +251,103 @@ const AllCars = ({ hideViewMoreCarsBtn, hideFilterSection }) => {
                         </div>
                     </div>
                     <div className='d-flex justify-content-center justify-content-lg-start align-items-start'>
+
+
                         <div className={`${hideFilterSection ? "col-lg-12" : "col-lg-9  justify-content-lg-start"} d-flex justify-content-center flex-wrap`}>
-                            {
-                                filteredCars?.map((carDetails) => {
-                                    return (
-                                        <div key={carDetails?.id} className='m-1 text-center fontSize13 fontWeight600 card p-1'>
+                            {filteredCars?.map((carDetails, index) => {
+                                const modalId = carDetails?.model?.replace(/\s+/g, '_');
+
+                                return (
+                                    <React.Fragment key={carDetails?.id}>
+                                        {/* Car Card with Motion */}
+                                        <motion.div
+                                            className='m-1 text-center fontSize13 fontWeight600 card p-1'
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                                            viewport={{ once: true, amount: 0.3 }}
+                                        >
                                             <img className='carImage' src={carDetails?.image} alt={carDetails?.brand} />
                                             <div className='d-flex justify-content-between align-items-center p-2'>
                                                 <div className='text-start'>
-                                                    <div className='cursorPointer text-truncate' style={{ maxWidth: '150px' }}>{carDetails?.brand} {carDetails?.model}</div>
+                                                    <div className='cursorPointer text-truncate' style={{ maxWidth: '150px' }}>
+                                                        {carDetails?.brand} {carDetails?.model}
+                                                    </div>
                                                     <div className='d-flex align-items-center'>
                                                         <div className='d-flex align-items-center'>
-                                                            <div>
-                                                                <img className='mx-1 memberIcon' src={memberIcon} alt='memberIcon' />
-                                                            </div>
+                                                            <img className='mx-1 memberIcon' src={memberIcon} alt='memberIcon' />
                                                             <div>{carDetails?.seats}</div>
                                                         </div>
                                                         <div className='d-flex align-items-center mx-2'>
-                                                            <div>
-                                                                <img className='mx-1 memberIcon' src={luggageIcon} alt='luggageIcon' />
-                                                            </div>
+                                                            <img className='mx-1 memberIcon' src={luggageIcon} alt='luggageIcon' />
                                                             <div>{carDetails?.luggage}</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className='text-end'>
-                                                    <div className='text-decoration-underline cursorPointer' data-bs-toggle='modal'
-                                                        data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}>
+                                                    <div className='text-decoration-underline cursorPointer' data-bs-toggle='modal' data-bs-target={`#${modalId}`}>
                                                         <span className='fontSize11'>starts from</span> ₹{parseFloat(carDetails?.price)?.toLocaleString('en-IN')}
                                                     </div>
-                                                    <div
-                                                        className='text-decoration-underline cursorPointer'
-                                                        data-bs-toggle='modal'
-                                                        data-bs-target={`#${carDetails?.model?.replace(/\s+/g, '_')}`}
-                                                    >
+                                                    <div className='text-decoration-underline cursorPointer' data-bs-toggle='modal' data-bs-target={`#${modalId}`}>
                                                         Base Price
                                                     </div>
                                                 </div>
                                             </div>
+                                        </motion.div>
 
-                                            {/* Modal */}
-                                            <div
-                                                className='modal fade'
-                                                id={carDetails?.model?.replace(/\s+/g, '_')}
-                                                data-bs-backdrop='static'
-                                                data-bs-keyboard='false'
-                                                tabIndex='-1'
-                                                aria-labelledby={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}
-                                                aria-hidden='true'
-                                            >
-                                                <div className='modal-dialog'>
-                                                    <div className='modal-content'>
-                                                        <div className='modal-header'>
-                                                            <div className='modalHeadingFareDetails' id={`${carDetails?.model?.replace(/\s+/g, '_')}_Label`}>
-                                                                {carDetails?.brand} {carDetails?.model} - Fare Details
-                                                            </div>
-                                                            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                        {/* Bootstrap Modal - outside motion.div to keep functionality intact */}
+                                        <div
+                                            className='modal fade'
+                                            id={modalId}
+                                            data-bs-backdrop='static'
+                                            data-bs-keyboard='false'
+                                            tabIndex='-1'
+                                            aria-labelledby={`${modalId}_Label`}
+                                            aria-hidden='true'
+                                        >
+                                            <div className='modal-dialog'>
+                                                <div className='modal-content'>
+                                                    <div className='modal-header'>
+                                                        <div className='modalHeadingFareDetails' id={`${modalId}_Label`}>
+                                                            {carDetails?.brand} {carDetails?.model} - Fare Details
                                                         </div>
-                                                        <div className='modal-body text-start'>
-                                                            {/* You can put more fare breakdown info here */}
-                                                            <div className='baseFareContainer'>
-                                                                <div className='mb-1'>₹ {carDetails?.baseFare} for outstation trips (min 300 kms travels)</div>
-                                                                <div className='d-flex align-items-center'><div><img className='tollIcon' src={toll} alt='toll' /></div> <div className='mx-2'>Excluding toll Charges</div></div>
+                                                        <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                    </div>
+                                                    <div className='modal-body text-start'>
+                                                        <div className='baseFareContainer'>
+                                                            <div className='mb-1'>₹ {carDetails?.baseFare} for outstation trips (min 300 kms travels)</div>
+                                                            <div className='d-flex align-items-center'>
+                                                                <img className='tollIcon' src={toll} alt='toll' />
+                                                                <div className='mx-2'>Excluding toll Charges</div>
                                                             </div>
                                                         </div>
-                                                        <div className='modal-footer'>
-                                                            <button type='button' className='btn btn-secondary fontSize13' data-bs-dismiss='modal'>
-                                                                Close
-                                                            </button>
-                                                            <div className='d-flex justify-content-center justify-content-center p-2'>
-                                                                <a
-                                                                    href="https://wa.me/918790535149"
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className='text-decoration-none'
-                                                                >
-                                                                    <button className='baseFareContactBtn fontSize13 d-flex align-items-center text-decoration-none'> <div><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /></div> <div className='mx-2'>Book Now</div></button>
-                                                                </a>
-                                                            </div>
+                                                    </div>
+                                                    <div className='modal-footer'>
+                                                        <button type='button' className='btn btn-secondary fontSize13' data-bs-dismiss='modal'>
+                                                            Close
+                                                        </button>
+                                                        <div className='d-flex justify-content-center p-2'>
+                                                            <a
+                                                                href="https://wa.me/918790535149"
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className='text-decoration-none'
+                                                            >
+                                                                <button className='baseFareContactBtn fontSize13 d-flex align-items-center text-decoration-none'>
+                                                                    <img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' />
+                                                                    <div className='mx-2'>Book Now</div>
+                                                                </button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                    )
-                                })
-                            }
+                                    </React.Fragment>
+                                );
+                            })}
                         </div>
+
 
                         {hideFilterSection ? "" :
                             <div className="d-none d-lg-block d-flex flex-column justify-content-center filterCarSectionContainer">
