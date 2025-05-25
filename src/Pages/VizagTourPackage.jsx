@@ -63,12 +63,12 @@ const VizagTourPackage = () => {
         Submarine Museum, Simhachalam Temple, Rushikonda Beach, and more — all in comfort with experienced local drivers.
       </p>
 
-      <img
+      {/* <img
         src="https://upload.wikimedia.org/wikipedia/commons/2/25/RK_Beach_Visakhapatnam.jpg"
         alt="RK Beach Vizag"
         className="img-fluid rounded mb-4"
         style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
-      />
+      /> */}
 
       <h2 className="mb-4">Available Vehicles</h2>
 

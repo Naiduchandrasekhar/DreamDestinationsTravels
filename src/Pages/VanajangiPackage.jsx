@@ -63,12 +63,12 @@ const VanjangiPackage = () => {
         and well-planned itineraries. Travel comfortably and explore nature’s hidden gems.
       </p>
 
-      <img
+      {/* <img
         src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Vanjangi_sunrise_point.jpg"
         alt="Vanjangi Hills"
         className="img-fluid rounded mb-4"
         style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
-      />
+      /> */}
 
       <h2 className="mb-4">Available Vehicles</h2>
 

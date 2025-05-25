@@ -10,7 +10,7 @@ const Footer = () => {
 
           {/* Brand and tagline */}
           <div className="col-md-4 mb-3">
-            <h5 className="fw-bold">Dream Destination</h5>
+            <h5 className="fw-bold">Dream Destinations Travels</h5>
             <p>Your trusted partner for premium travel cars and unforgettable journeys.</p>
           </div>
 
@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="fw-semibold">Quick Links</h6>
             <ul className="list-unstyled">
-              <Link to="/" className="text-decoration-none"><div  className="text-white">Home</div></Link>
+              <Link to="/" className="text-decoration-none"><div className="text-white">Home</div></Link>
               <Link to="/OurCars" className="text-decoration-none"><div className="text-white">Our Cars</div></Link>
               <Link to="/Contact" className="text-decoration-none"><div className="text-white">Contact Us</div></Link>
             </ul>
@@ -28,20 +28,22 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="fw-semibold">Contact</h6>
             <div>Phone Number : <a href="tel:+918790535149" className="text-success">+91 8790535149</a></div>
-            <div>Email: info@dreamdestination.com</div>
             <div>
-            <div className='d-flex p-1'>
-              <a
-                href="https://wa.me/918790535149"
-                target="_blank"
-                rel="noopener noreferrer"
-                className='text-decoration-none'
-              >
-                <button className='baseFareContactBtn w-100 fontSize13 d-flex align-items-center text-decoration-none'> <div><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /></div> <div className='mx-2'>Book Now</div></button>
-              </a>
+              Email: <a className="text-success" href="mailto:dreamdestinationsonline@gmail.com">dreamdestinationsonline@gmail.com</a>
             </div>
+            <div>
+              <div className='d-flex'>
+                <a
+                  href="https://wa.me/918790535149"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className='text-decoration-none'
+                >
+                  <button className='baseFareContactBtn w-100 fontSize13 d-flex align-items-center text-decoration-none'> <div><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /></div> <div className='mx-2'>Book Now</div></button>
+                </a>
+              </div>
             </div>
-            <p>Maddilapalem, Visakhapatnam, Andhra Pradesh, India</p>
+            <p>14-170-1/9, near Saradapeetam, Chinnamushidiwada, Pendurthi, Visakhapatnam, Andhra Pradesh 531173</p>
           </div>
 
         </div>

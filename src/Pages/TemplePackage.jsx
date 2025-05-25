@@ -63,12 +63,12 @@ const TemplePackage = () => {
         Our packages offer comfort, convenience, and peace of mind with trusted drivers and clean vehicles.
       </p>
 
-      <img
+      {/* <img
         src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Simhachalam_Temple.jpg"
         alt="Simhachalam Temple Vizag"
         className="img-fluid rounded mb-4"
         style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}
-      />
+      /> */}
 
       <h2 className="mb-4">Available Vehicles</h2>
 
