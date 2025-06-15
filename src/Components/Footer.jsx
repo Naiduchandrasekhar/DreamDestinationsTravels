@@ -26,13 +26,13 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="col-md-4 mb-3">
-            <h6 className="fw-semibold">Contact</h6>
-            <div>Phone Number : <a href="tel:+918790535149" className="text-success">+91 8790535149</a></div>
-            <div>
+            <h6 className="fw-semibold mb-2">Contact</h6>
+            <div>Phone Number : <a href="tel:+918790535149" className="text-success mb-2">+91 8790535149</a></div>
+            <div className="mb-2">
               Email: <a className="text-success" href="mailto:dreamdestinationsonline@gmail.com">dreamdestinationsonline@gmail.com</a>
             </div>
             <div>
-              <div className='d-flex'>
+              <div className='d-flex mb-2'>
                 <a
                   href="https://wa.me/918790535149"
                   target="_blank"
