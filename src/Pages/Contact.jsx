@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import undrawContactUs from "../Images/undrawContactUs.png"
 import { Helmet } from 'react-helmet';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0,0)
   }, [])
+  const { t } = useTranslation();
   return (
     <div>
        <Helmet>
@@ -15,27 +17,44 @@ const Contact = () => {
         <meta property="og:description" content="Reach out to us for affordable and reliable car rental services in Visakhapatnam. We’re here to help!" />
         <meta property="og:image" content="https://yourwebsite.com/images/share-preview.jpg" />
         <meta property="og:url" content="https://yourwebsite.com/contact" />
+        <script type="application/ld+json">
+          {`{
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            "name": "Dream Destinations Travels",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "14-170/1/9, Chinnamushidiwada, Pendurthi",
+              "addressLocality": "Visakhapatnam",
+              "addressRegion": "Andhra Pradesh",
+              "postalCode": "531173",
+              "addressCountry": "IN"
+            },
+            "telephone": "+918790535149",
+            "areaServed": "Visakhapatnam"
+          }`}
+        </script>
       </Helmet>
        <div className="container pt-5 py-5">
       <div className="mb-5 pt-5">
-        <h2 className="display-5 fw-bold text-dark">Contact Dream Destinations Travels</h2>
+        <h2 className="display-5 fw-bold text-dark">{t('contact.title')}</h2>
         <p className="text-muted">
-          Welcome to Dream Destinations Travels! We specialize in providing reliable and comfortable car rental services to make your journeys memorable. Whether you're planning a business trip or a leisure getaway, our fleet is ready to serve you.
+          {t('contact.intro')}
         </p>
       </div>
 
       <div className="bg-light p-3 rounded rounded-3 shadow-sm mb-5 d-flex flex-column flex-lg-row justify-content-around align-items-center">
         <div className='order-1 order-lg-0'>
         <div className="mb-3">
-          <h5 className="fw-semibold text-secondary">Email</h5>
+          <h5 className="fw-semibold text-secondary">{t('contact.emailLabel')}</h5>
           <p className="text-dark">info@dreamdestination.com</p>
         </div>
         <div className="mb-3">
-          <h5 className="fw-semibold text-secondary">Phone</h5>
+          <h5 className="fw-semibold text-secondary">{t('contact.phoneLabel')}</h5>
           <p className="text-dark">+91 8790535149</p>
         </div>
         <div className="mb-3">
-          <h5 className="fw-semibold text-secondary">Address</h5>
+          <h5 className="fw-semibold text-secondary">{t('contact.addressLabel')}</h5>
           <p className="text-dark">
             14-170/1/9, Chinnamushidiwada, Pendurthi, Visakhapatnam, Andhra Pradesh 531173
           </p>
@@ -47,7 +66,7 @@ const Contact = () => {
       </div>
 
       <div>
-        <h5 className="fw-semibold text-secondary mb-3">Our Location</h5>
+        <h5 className="fw-semibold text-secondary mb-3">{t('contact.ourLocation')}</h5>
         <div className="ratio ratio-16x9 rounded overflow-hidden">
           <iframe
             title="Dream Destinations Travels Location"

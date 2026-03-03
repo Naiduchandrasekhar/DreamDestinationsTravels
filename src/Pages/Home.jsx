@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import LoaderContainer from "../Components/LoaderContainer"
 import { Helmet } from 'react-helmet';
+import { useTranslation } from '../hooks/useTranslation';
 
 // import planeEritaCarImage from "../Images/planeEritaCarImage.png";
 // import planeDzireCarImage from "../Images/planeDzireCarImage.png";
@@ -120,6 +121,7 @@ const travelPlaces = [
 
 const Home = () => {
   const [loader, setLoader] = useState(true)
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0,0)
@@ -137,17 +139,34 @@ const Home = () => {
         <meta property="og:description" content="Book reliable self-drive cars and airport pickups in Vizag. Easy booking, best rates, no hassle." />
         <meta property="og:image" content="https://yourwebsite.com/images/share-preview.jpg" />
         <meta property="og:url" content="https://yourwebsite.com" />
+        <script type="application/ld+json">
+          {`{
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            "name": "Dream Destinations Travels",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "14-170/1/9, Chinnamushidiwada, Pendurthi",
+              "addressLocality": "Visakhapatnam",
+              "addressRegion": "Andhra Pradesh",
+              "postalCode": "531173",
+              "addressCountry": "IN"
+            },
+            "telephone": "+918790535149",
+            "areaServed": "Visakhapatnam"
+          }`}
+        </script>
       </Helmet>
       <div className=''>
       {loader ? <LoaderContainer /> :
         <div>
           <div className='firstContainer d-flex justify-content-center position-relative'>
             <div className='text-white firstDescriptionContainer'>
-              <div className='text-center firstDescriptionTitle'>
-                Dream Destinations Travels
-              </div>
+              <h1 className='text-center firstDescriptionTitle'>
+                {t('header.pageTitle')}
+              </h1>
               <div className='firstDescriptionSubTitle'>
-                Experience stress-free travel with reliable airport pickups and personalized service, wherever you go.
+                {t('home.subtitle')}
               </div>
               <div className='my-2 d-none d-lg-flex justify-content-around align-items-center'>
                 <a
@@ -155,21 +174,27 @@ const Home = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className='descriptionButtons bgLinearGradient'>Contact US</button>
+                  <button className='descriptionButtons bgLinearGradient'>
+                    {t('button.contactUs')}
+                  </button>
                 </a>
                 <a
                   href="https://wa.me/918790535149"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className='descriptionButtons bgLinearGradient'>Travel Packages</button>
+                  <button className='descriptionButtons bgLinearGradient'>
+                    {t('button.travelPackages')}
+                  </button>
                 </a>
                 <a
                   href="https://wa.me/918790535149"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className='descriptionButtons bgLinearGradient'>Budget Friendly</button>
+                  <button className='descriptionButtons bgLinearGradient'>
+                    {t('button.budgetFriendly')}
+                  </button>
                 </a>
               </div>
               <div className='d-flex justify-content-center d-lg-none'>
@@ -186,7 +211,7 @@ const Home = () => {
 
           <div className='mainAirportContainer'>
             <div className='mainTitleSkipRental p-2 my-2'>
-              Pickups from Vizag Airport, Hassle-Free
+              {t('home.mainTitle')}
             </div>
             <div className='d-flex flex-column flex-lg-row justify-content-center'>
               <div className='col-lg-5 d-flex justify-content-center'>
@@ -194,7 +219,7 @@ const Home = () => {
               </div>
               <div className='col-lg-5 p-2'>
                 <div className='airportDescription'>
-                  Skip the usual rental process and enjoy seamless, on-time airport pickups. No lines, no delays — just reliable, comfortable rides waiting when you land.
+                  {t('home.airportDescription')}
                 </div>
                 <ul className='unorderList text-lg-nowrap text-wrap'>
                   <li> From runway to driveway, effortlessly.</li>
@@ -219,7 +244,7 @@ const Home = () => {
           <AllCars hideViewMoreCarsBtn={false} hideFilterSection={true} />
           <div className='p-3 container'>
             <div className='tourPackagesTite p-2 my-2 text-center text-decoration-underline'>Our Tour Packages</div>
-            <div className='d-flex justify-content-sm-center justify-content-lg-between align-items-center flex-wrap'>
+            <div className='d-flex justify-content-sm-center justify-content-lg-center align-items-center flex-wrap'>
               {travelPlaces?.map((place, index) => {
                 return (
                   <div className='m-1' key={index}>

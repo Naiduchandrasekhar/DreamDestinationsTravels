@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navLinks } from "../utils/navigation";
 import { DreamDestinationLogo } from "../utils/images";
+import { useTranslation } from "../hooks/useTranslation";
+import { useDispatch } from "react-redux";
+import { setLanguage } from "../store/languageSlice";
+import { availableLanguages } from "../utils/languages";
 // import dayMode from "../Images/dayMode.png"  // unused for now
 
 const Navbar = () => {
@@ -12,9 +16,15 @@ const Navbar = () => {
     bsOffcanvas?.hide();
   };
 
-  const location = useLocation()
-  const pathName =  location?.pathname
-  console.log(pathName === "/OurCars");
+  const location = useLocation();
+  const pathName = location?.pathname;
+  const { t, lang } = useTranslation();
+  const dispatch = useDispatch();
+
+  // helper to change language global state
+  const changeLanguage = (code) => {
+    dispatch(setLanguage(code));
+  };
   
 
   return (
@@ -27,6 +37,32 @@ const Navbar = () => {
               src={DreamDestinationLogo} 
               alt="dreamLogo"
             />
+          </div>
+          {/* language selector */}
+          <div className="ms-auto me-3">
+            <div className="dropdown">
+              <button
+                className="btn btn-sm btn-secondary dropdown-toggle"
+                type="button"
+                id="languageDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {lang.toUpperCase()}
+              </button>
+              <ul className="dropdown-menu bg-dark text-white" aria-labelledby="languageDropdown">
+                {availableLanguages.map((l) => (
+                  <li key={l.code}>
+                    <button
+                      className="dropdown-item bg-transparent text-white"
+                      onClick={() => changeLanguage(l.code)}
+                    >
+                      {l.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Toggle Button for Offcanvas */}
@@ -86,7 +122,7 @@ const Navbar = () => {
                       className={`navbarPageNames ${pathName === link.path ? "borderBottomPages" : "text-decoration-none"}`}
                       onClick={closeOffcanvas}
                     >
-                      {link.name}
+                      {t(link.key)}
                     </Link>
                   </div>
                 ))}

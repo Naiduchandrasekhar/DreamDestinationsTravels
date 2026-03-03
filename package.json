@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "@reduxjs/toolkit": "^2.11.2",
     "bootstrap": "^5.3.5",
     "framer-motion": "^12.12.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.30.0"
   },
   "devDependencies": {

@@ -1,8 +1,11 @@
 import React from "react";
 import whatsUpIcon from "../Images/whatsUpIcon.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from '../hooks/useTranslation';
+import { navLinks } from '../utils/navigation';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bgLinearGradient text-white  py-4 mt-5">
       <div className="container">
@@ -10,7 +13,7 @@ const Footer = () => {
 
           {/* Brand and tagline */}
           <div className="col-md-4 mb-3">
-            <h5 className="fw-bold">Dream Destinations Travels</h5>
+            <h5 className="fw-bold">{t('header.pageTitle')}</h5>
             <p>Your trusted partner for premium travel cars and unforgettable journeys.</p>
           </div>
 
@@ -18,9 +21,11 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="fw-semibold">Quick Links</h6>
             <ul className="list-unstyled">
-              <Link to="/" className="text-decoration-none"><div className="text-white">Home</div></Link>
-              <Link to="/OurCars" className="text-decoration-none"><div className="text-white">Our Cars</div></Link>
-              <Link to="/Contact" className="text-decoration-none"><div className="text-white">Contact Us</div></Link>
+              {navLinks.map((link) => (
+                <Link key={link.path} to={link.path} className="text-decoration-none">
+                  <div className="text-white">{t(link.key)}</div>
+                </Link>
+              ))}
             </ul>
           </div>
 
