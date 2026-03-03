@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import DreamDestinationLogo from "../Images/DreamDestinationLogo.png";
 import { Link, useLocation } from "react-router-dom";
-import dayMode from "../Images/dayMode.png"
+import { navLinks } from "../utils/navigation";
+import { DreamDestinationLogo } from "../utils/images";
+// import dayMode from "../Images/dayMode.png"  // unused for now
 
 const Navbar = () => {
   const [mode, setMode] = useState(false)
@@ -78,15 +79,17 @@ const Navbar = () => {
             </div>
             <div className="offcanvas-body offcanvas-body-container">
               <div className="navbar-nav justify-content-end align-items-start flex-grow-1 pe-3 fontSanserif">
-                <div className={`m-2`}>
-                  <Link to="/" className={`navbarPageNames ${pathName === "/" ? "borderBottomPages" : "text-decoration-none"}`} onClick={closeOffcanvas}>Home</Link>
-                </div>
-                <div className="m-2">
-                  <Link to="/OurCars" className={`navbarPageNames ${pathName === "/OurCars" ? "borderBottomPages" : "text-decoration-none"}`} onClick={closeOffcanvas}>Our Cars</Link>
-                </div>
-                <div className="m-2">
-                  <Link to="/Contact" className={`navbarPageNames ${pathName === "/Contact" ? "borderBottomPages" : "text-decoration-none"}`} onClick={closeOffcanvas}>Contact Us</Link>
-                </div>
+                {navLinks.map((link) => (
+                  <div className="m-2" key={link.path}>
+                    <Link
+                      to={link.path}
+                      className={`navbarPageNames ${pathName === link.path ? "borderBottomPages" : "text-decoration-none"}`}
+                      onClick={closeOffcanvas}
+                    >
+                      {link.name}
+                    </Link>
+                  </div>
+                ))}
                 {/* <div className="m-2">
                   <img src={dayMode} alt="sunIcon" className="modesIcon" />
                 </div> */}
