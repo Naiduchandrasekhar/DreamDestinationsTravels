@@ -56,12 +56,20 @@ const LambasingiPackage = () => {
   }, []);
 
   return (
-    <div className="container py-5">
-      <h1 className="pt-5 mb-4">Lambasingi Tour Packages</h1>
-      <p className="text-muted mb-4">
-        Explore the misty hills of Lambasingi, often called the "Kashmir of Andhra Pradesh". Enjoy cool weather, scenic beauty, and peaceful nature.
-        Our tour packages provide reliable transportation and experienced local drivers.
-      </p>
+    <section className="section">
+      <div className="container">
+        <div className="text-center mb-5">
+          <h1 className="section-title">Lambasingi Tour Packages</h1>
+          <p className="section-subtitle">
+            Explore the misty hills of Lambasingi, often called the "Kashmir of Andhra Pradesh". Enjoy cool weather, scenic beauty, and peaceful nature.
+          </p>
+        </div>
+
+        <div className="glass p-5 mb-5">
+          <p className="text-muted">
+            Our tour packages include reliable transportation, experienced local drivers, and customizable itineraries for a comfortable journey.
+          </p>
+        </div>
 
       {/* <img
         src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Lambasingi_morning_fog.jpg"
@@ -108,10 +116,13 @@ const LambasingiPackage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className='w-100 btn text-white bgLinearGradient'><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /> Contact Us</button>
+                <button className='w-100 btn btn-brand d-flex align-items-center justify-content-center gap-2'>
+                  <img className='whatsUpIcon' src={whatsUpIcon} alt='WhatsApp' /> Contact Us
+                </button>
               </a>
             </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

@@ -56,15 +56,20 @@ const ArakuPackage = () => {
   }, []);
 
   return (
-    <div className="container py-5">
-      <h1 className="pt-5 mb-4">Araku Tour Packages</h1>
+    <section className="section">
+      <div className="container">
+        <div className="text-center mb-5">
+          <h1 className="section-title">Araku Tour Packages</h1>
+          <p className="section-subtitle">
+            Discover the serene beauty of Araku Valley with our curated tour packages. Explore misty hills, coffee plantations, and tribal culture in comfort.
+          </p>
+        </div>
 
-      <div>
-        <p className="text-muted mb-4">
-          Discover the serene beauty of Araku Valley with our exclusive tour packages. Explore misty hills, coffee plantations,
-          and tribal culture. Choose from a variety of comfortable car options for a personalized travel experience.
-        </p>
-      </div>
+        <div className="glass p-5 mb-5">
+          <p className="text-muted">
+            Choose from a range of premium vehicles designed for comfort and style. All packages include a professional driver and optional pickup/drop services.
+          </p>
+        </div>
       {/* <img
         src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Lambasingi_morning_fog.jpg"
         alt="Lambasingi"
@@ -75,10 +80,10 @@ const ArakuPackage = () => {
 
       <h2 className="mb-4">Available Vehicles</h2>
 
-      <div className="table-responsive tableContainer">
-        <table className="table table-bordered align-middle text-center">
-          <thead className="table-light">
-            <tr>
+      <div className="table-responsive tableContainer glass p-4">
+        <table className="table table-borderless align-middle text-center text-white">
+          <thead>
+            <tr className="text-muted">
               <th>Image</th>
               <th>Car Model</th>
               <th>Type</th>
@@ -88,18 +93,18 @@ const ArakuPackage = () => {
           </thead>
           <tbody>
             {carPackages.map((car, index) => (
-              <tr key={index}>
+              <tr key={index} className="border-bottom border-white-10">
                 <td>
                   <img
                     src={car.image}
                     alt={car.name}
-                    style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '5px' }}
+                    style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: '10px' }}
                   />
                 </td>
                 <td><strong>{car.name}</strong></td>
                 <td>{car.type}</td>
                 <td>{car.pax}</td>
-                <td className="text-success fw-bold">{car.price}</td>
+                <td className="text-accent fw-bold">{car.price}</td>
               </tr>
             ))}
           </tbody>
@@ -111,10 +116,13 @@ const ArakuPackage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button className='w-100 btn text-white bgLinearGradient'><img className='whatsUpIcon' src={whatsUpIcon} alt='whatsUpIcon' /> Contact Us</button>
+          <button className='w-100 btn btn-brand d-flex align-items-center justify-content-center gap-2'>
+            <img className='whatsUpIcon' src={whatsUpIcon} alt='WhatsApp' /> Contact Us
+          </button>
         </a>
       </div>
     </div>
+    </section>
   );
 };
 
